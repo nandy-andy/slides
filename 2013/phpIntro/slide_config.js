@@ -21,6 +21,7 @@ var SLIDE_CONFIG = {
   presenters: [{
     name: 'Andrzej \'nAndy\' Łukaszewski',
     company: 'Web Developer, Wikia',
+    email: 'nandy@wikia-inc.com',
     twitter: '@nandy_andy',
     www: 'http://blog.lukaszewski.it',
     github: 'http://github.com/nandy-andy'
