@@ -10,9 +10,9 @@ $gray-2: #a9a9a9;
 $gray-3: #797979;
 $gray-4: #515151;
 
-$brand-blue: rgb(67, 135, 253);
-$brand-blue-secondary: #3c8ef3;
-$brand-blue-secondary2: #2a7cdf;
+$brand-blue: #00396d;
+$brand-blue-secondary: #2c85d6;
+$brand-blue-secondary2: #d3eaff;
 
 $brand-red: rgb(244, 74, 63);
 $brand-red-secondary: #e0543e;
@@ -454,44 +454,17 @@ button:not(:disabled):active {
 .blue3 {
   color: $brand-blue-secondary2;
 }
-.yellow {
-  color: $brand-yellow;
-}
-.yellow2 {
-  color: $brand-yellow-secondary;
-}
-.yellow3 {
-  color: $brand-yellow-secondary2;
-}
-.green {
-  color: $brand-green;
-}
-.green2 {
-  color: $brand-green-secondary;
-}
-.green3 {
-  color: $brand-green-secondary2;
+.orange {
+  color: #fa5c20;
 }
 .red {
   color: $brand-red;
 }
-.red2 {
-  color: $brand-red-secondary;
-}
-.red3 {
-  color: $brand-red-secondary2;
+.green {
+  color: #89c440;
 }
 .gray {
-  color: $gray-1;
-}
-.gray2 {
-  color: $gray-2;
-}
-.gray3 {
-  color: $gray-3;
-}
-.gray4 {
-  color: $gray-4;
+  color: #f3f3f3;
 }
 
 .white {

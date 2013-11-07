@@ -634,47 +634,22 @@ button:not(:disabled):active {
 
 /* line 448, ../scss/default.scss */
 .blue {
-  color: #4387fd;
+  color: #00396d;
 }
 
 /* line 451, ../scss/default.scss */
 .blue2 {
-  color: #3c8ef3;
+  color: #2c85d6;
 }
 
 /* line 454, ../scss/default.scss */
 .blue3 {
-  color: #2a7cdf;
+  color: #d3eaff;
 }
 
 /* line 457, ../scss/default.scss */
-.yellow {
-  color: #ffd14d;
-}
-
-/* line 460, ../scss/default.scss */
-.yellow2 {
-  color: #f9cc46;
-}
-
-/* line 463, ../scss/default.scss */
-.yellow3 {
-  color: #f6c000;
-}
-
-/* line 466, ../scss/default.scss */
-.green {
-  color: #0da861;
-}
-
-/* line 469, ../scss/default.scss */
-.green2 {
-  color: #00a86d;
-}
-
-/* line 472, ../scss/default.scss */
-.green3 {
-  color: #009f5d;
+.orange {
+  color: #fa5c20;
 }
 
 /* line 475, ../scss/default.scss */
@@ -682,34 +657,13 @@ button:not(:disabled):active {
   color: #f44a3f;
 }
 
-/* line 478, ../scss/default.scss */
-.red2 {
-  color: #e0543e;
-}
-
-/* line 481, ../scss/default.scss */
-.red3 {
-  color: #d94d3a;
+.green {
+  color: #89c440;
 }
 
 /* line 484, ../scss/default.scss */
 .gray {
   color: #e6e6e6;
-}
-
-/* line 487, ../scss/default.scss */
-.gray2 {
-  color: darkgrey;
-}
-
-/* line 490, ../scss/default.scss */
-.gray3 {
-  color: #797979;
-}
-
-/* line 493, ../scss/default.scss */
-.gray4 {
-  color: #515151;
 }
 
 /* line 497, ../scss/default.scss */
