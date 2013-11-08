@@ -265,10 +265,235 @@ class WallController extends ArticleCommentsModule {
 
   <slide>
     <hgroup>
-      <h2>Plan prezentacji</h2>
+      <h2>Podstawowa składnia</h2>
     </hgroup>
     <article>
+      <pre class="prettyprint" data-lang="php">&lt;?php ... ?&gt;</pre>
+      <pre class="prettyprint" data-lang="php">&lt;script language="php"&gt; ... &lt;/script&gt;</pre>
+      <pre class="prettyprint" data-lang="php">&lt;? ... ?&gt;</pre>
+      <pre class="prettyprint" data-lang="php">&lt;% ... %&gt;</pre>
+      <pre class="prettyprint" data-lang="php">&lt;p&gt;This is going to be ignored.&lt;/p&gt;
+&lt;?= 'While this is going to be parsed.'; ?&gt;
+&lt;p&gt;This will also be ignored.&lt;/p&gt;</pre>
     </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>tagi otwierające,</li>
+          <li>osadzanie wewnątrz HTML</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Podstawowa składnia</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="php">&lt;?php
+if ($expression) {
+    ?&gt;
+    &lt;strong&gt;This is true.&lt;/strong&gt;
+    &lt;?php
+} else {
+    ?&gt;
+    &lt;strong&gt;This is false.&lt;/strong&gt;
+    &lt;?php
+}
+?&gt;</pre>
+            <pre class="prettyprint" data-lang="php">&lt;?php if( $expression ): ?&gt;
+    &lt;strong&gt;This is true.&lt;/strong&gt;
+&lt;?php else: ?&gt;
+    &lt;strong&gt;This is false.&lt;/strong&gt;
+&lt;?php endif; ?&gt;</pre>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>konstrukcje: if, switch,</li>
+	  <li>pętle: do-while, while, for, foreach</li>
+          <li>dwa sposoby zapisu: drugi bardzo wygodny przy szablonach</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Zmienne</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>$variable, $_var, $v4ri5bl3,</li>
+        <li>$variable != $VARIABLE</li>
+        <li>predefiniowane zmienne i zmienne superglobalne:
+        <li>
+	  <ul>
+	    <li>$GLOBALS,</li>
+            <li>$_SERVER,</li>
+            <li>$_GET,</li>
+            <li>$_POST,</li>
+            <li>$_FILES,</li>
+            <li>$_COOKIE,</li>
+            <li>$_SESSION,</li>
+            <li>$_REQUEST,</li>
+            <li>$_ENV.</li>
+          </li>
+        </ul>
+      </ul>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>zaczynają się znakiem dolara,</li>
+          <li>nie mogą zaczynać się od cyfry,</li>
+          <li>wielkość znaków ma znaczenie.</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Zmienne</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="php">$a = 'welcome';
+$$a = 'AKAI'; //echo $welcome; --> AKAI
+echo &quot;$a ${$a}&quot;</pre>
+                 <pre class="prettyprint" data-lang="php">class Student {
+    public $sex = 'male';
+    public $name = 'Steve';
+    public $surname = 'Kowalsky';
+    public $class = 'geography';
+}
+$s = new Student();
+$property = 'name';
+$propertiesArr = array('sex', 'name', 'surname', 'class');
+echo $s-&gt;$property . ' ';
+echo $s-&gt;$propertiesArr[2];</pre>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li></li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Typy danych</h2>
+    </hgroup>
+    <article>
+       <ol class="build">
+                <li class="to-build">
+                        Cztery typy proste:
+                        <ul class="build" style="margin-top: 10px">
+                                <li class="to-build">boolean</li>
+                                <li class="to-build">integer</li>
+                                <li class="to-build">float</li>
+                                <li class="to-build">string</li>
+                       </ul>
+                </li>
+                <li class="to-build">
+                        Dwa typy złożone:
+                        <ul class="build" style="margin-top: 10px">
+                               <li class="to-build">array</li>
+                               <li class="to-build">object</li>
+                        </ul>                        
+                </li>
+                <li>
+                        Dwa typy specjalne:
+                        <ul class="build" style="margin-top: 10px">
+                                <li class="to-build">resource</li>
+                                <li class="to-build">NULL</li>
+                        </ul>
+                </li>
+            </ol>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li></li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Typy danych</h2>
+    </hgroup>
+    <article>
+       <pre class="prettyprint" data-lang="php">
+&lt;?php                      &lt;?php // od PHP 5.4
+$array = array(               $array = [
+    "foo" =&gt; "bar",            "foo" =&gt; "bar",
+    "bar" =&gt; "foo",            "bar" =&gt; "foo"  
+);                            ];
+?&gt;                         ?&gt;</pre>
+<pre class="prettyprint" data-lang="php">
+$array = array(
+    1    => "a",
+    "1"  => "b",
+    1.5  => "c",
+    true => "d",
+);
+</pre>
+<ul class="build code">
+                <li><pre class="prettyprint">
+/*array(1) {
+  [1]=> string(1) "d"
+}*/
+</pre></li>
+</ul>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li></li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Typy danych</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+                <li><pre class="prettyprint">
+$object = (object) 'AKAI';
+</pre></li>
+            <li><pre class="prettyprint">
+echo $object->scalar; //output: AKAI
+</pre></li>
+            <li><pre class="prettyprint">
+$arr = (object) array('AKAI', 1, 'WIKIA');
+/*
+object(stdClass)#1 (3) {
+  [0]=>
+  string(4) "AKAI"
+  [1]=>
+  int(1)
+  [2]=>
+  string(5) "WIKIA"
+}
+*/
+</pre></li>
+            </ul>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li></li>
+        </ul>
+      </section>
+    </aside>
   </slide>
 
   <slide class="thank-you-slide segue nobackground">
