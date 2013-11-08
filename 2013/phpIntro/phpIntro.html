@@ -42,6 +42,235 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
   </slide>
 
+  <slide>
+    <hgroup>
+      <h2>Plan prezentacji</h2>
+    </hgroup>
+    <article>
+      <ol class="build">
+        <li>Czym jest PHP?</li>
+        <li>Zarys historyczny</li>
+        <li>Podstawy</li>
+        <li>Zalety i wady</li>
+        <li>Podsumowanie</li>
+      </ol>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Czym jest PHP?</h2>
+    </hgroup>
+    <article>
+       <ul class="build fade">
+         <li>PHP: Hypertext Preprocessor</li>
+         <li>język skryptowy oparty na składni C, Java, Perl</li>
+         <li>open source</li>
+         <li>ogromnie popularny</li>
+         <li>głównie wykorzystywany "w rozwoju sieci"</li>
+       </ul>
+       <footer class="source white">http://www.php.net/manual/en/preface.php</footer>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <hgroup>
+      <h1>Zarys historyczny</h1><br/><br/><br /><br /><br />
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/rasmus_lerdorf_elePHPant.jpg)">
+    <hgroup>
+      <h2 class="white">1994</h2>
+    </hgroup>
+    <article>
+      <footer class="source white">http://www.lafermeduweb.net/images/billets/2010-11/rasmus_lerdorf_forumphp.jpg</footer>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Rasmus Lerdorf</li>
+          <li>twórca PHP</li>
+          <li>Forms Interpreter</li>
+          <li>dość kontrowersyjne podejście do rozwoju języka: model (db), widok (html), kontroler (php)</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>PHP/FI</h2>
+    </hgroup>
+    <article>
+       <pre class="prettyprint" data-lang="php/fi">
+&lt;!--include /text/header.html--&gt;
+
+&lt;!--getenv HTTP_USER_AGENT--&gt;
+&lt;!--ifsubstr $exec_result Mozilla--&gt;
+  Hey, you are using Netscape!
+&lt;!--endif--&gt;
+                  
+&lt;!--sql database select * from table where user='$username'--&gt;
+&lt;!--ifless $numentries 1--&gt;
+  Sorry, that record does not exist
+&lt;!--endif exit--&gt;
+  Welcome &lt;!--$user--&gt;!
+  You have &lt;!--$index:0--&gt; credits left in your account.
+
+&lt;!--include /text/footer.html--&gt;</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/gutmans_suraski.jpg)">
+    <hgroup>
+      <h2 class="white">1997 - <strong>Ze</strong>ev Suraski & A<strong>nd</strong>i Gutmans</h2>
+    </hgroup>
+    <article>
+      <footer class="source white">http://gal.sig9.net/main.php?g2_view=core.DownloadItem&g2_itemId=607&g2_serialNumber=2</footer>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>twórcy Zenda,</li>
+          <li>pochodzą z Izraela (T_PAAMAYIM_NEKUDOTAYIM)</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>PHP 3</h2>
+    </hgroup>
+    <article>
+       <pre class="prettyprint" data-lang="php">
+class Title {
+//...
+    /**
+     * @name Private member variables
+     * Please use the accessor functions instead.
+     * @private
+     */
+    //@{
+    var $mTextform = '';       ///< Text form (spaces not underscores) of the main part
+    var $mUrlform = '';        ///< URL-encoded form of the main part
+    var $mDbkeyform = '';      ///< Main part with underscores
+//...
+    var $mNamespace = NS_MAIN;
+    var $mLength = -1;          ///< The page length, 0 for special pages
+    var $mRedirect = null;      ///< Is the article at this title a redirect?
+    var $mBacklinkCache = null; ///< Cache of links to this title
+    //@}</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>PHP 4</h2>
+    </hgroup>
+    <article>
+       <pre class="prettyprint" data-lang="php">
+class WallController extends ArticleCommentsModule {
+    private $helper;
+    protected $allowedNamespaces = array();
+    protected $sortingType = 'index';
+    const WALL_MESSAGE_RELATIVE_TIMESTAMP = 604800; // relative message timestampt for 7 days (improvement 20178)
+
+    public function __construct() {
+        $this->app = F::App();
+        $this->allowedNamespaces = $this->app->getLocalRegistry()->get('UserProfileNamespaces');
+    }
+    
+    public function init() {
+        $this->helper = F::build('WallHelper', array());
+    }
+//...</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>PHP 5</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>możliwość używania HTTP jako protokół stanowy (ciasteczka, sesje),</li>
+        <li>możliwość nawiązania połączenia z bazami danych (mysql_*, PDO),</li>
+        <li>możliwość manipulacji na dokumnetach XML,</li>
+        <li>możliwość przesyłania plików na serwer,</li>
+        <li>możliwość przetwarzania obrazków (GD2, ImageMagick, GMagick),</li>
+        <li>możliwość przetwarzania plików dźwiękowych.</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>PHP 5.1</h2>
+    </hgroup>
+    <article>
+       <pre class="prettyprint" data-lang="php">//TODO</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>PHP 5.2</h2>
+    </hgroup>
+    <article>
+       <pre class="prettyprint" data-lang="php">//TODO</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>PHP 5.3</h2>
+    </hgroup>
+    <article>
+       <pre class="prettyprint" data-lang="php">//TODO</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>PHP 5.4</h2>
+    </hgroup>
+    <article>
+       <pre class="prettyprint" data-lang="php">//TODO</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>PHP 5.5</h2>
+    </hgroup>
+    <article>
+       <pre class="prettyprint" data-lang="php">//TODO</pre>
+    </article>
+  </slide>
+
+  <slide class="dark nobackground">
+    <article class="flexbox vcenter">
+       <img src="images/php16.jpg" alt="PHP 16" title="PHP 16" />
+       <footer class="source">http://seodemotivators.com/wp-content/uploads/2011/09/tmpUpH3dE.jpg">http://seodemotivators.com/wp-content/uploads/2011/09/tmpUpH3dE.jpg</footer>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <hgroup>
+      <h1>Podstawy</h1><br/><br/><br /><br /><br />
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Plan prezentacji</h2>
+    </hgroup>
+    <article>
+    </article>
+  </slide>
+
   <slide class="thank-you-slide segue nobackground">
     <aside class="gdbar right"><img src="images/wikia_bar_logo.png"></aside>
     <article class="flexbox vleft auto-fadein">
