@@ -328,7 +328,7 @@ h3 {
   color: $gray-3;
 }
 
-ul {
+ul, ol {
   margin-left: 1.2em;
   margin-bottom: 1em;
   position: relative;
@@ -336,10 +336,12 @@ ul {
   li {
     margin-bottom: 0.5em;
 
-    ul {
+    ul, ol {
       margin-left: 2em;
       margin-bottom: 0;
-
+    }
+    
+    ul {
       li:before {
         content: '-';
         font-weight: 600;
@@ -347,15 +349,17 @@ ul {
     }
   }
 
+  ul, ol {
+    margin-top: .5em;
+  }
+}
+
+ul {
   > li:before {
     content: '\00B7';
     margin-left: -1em;
     position: absolute;
     font-weight: 600;
-  }
-
-  ul {
-    margin-top: .5em;
   }
 }
 

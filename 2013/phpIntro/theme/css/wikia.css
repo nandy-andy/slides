@@ -486,17 +486,25 @@ h3 {
 }
 
 /* line 331, ../scss/default.scss */
-ul {
+ul,
+ol {
   margin-left: 1.2em;
   margin-bottom: 1em;
   position: relative;
 }
+
+ol {
+  list-style-type: decimal;
+}
+
 /* line 336, ../scss/default.scss */
-ul li {
+ul li,
+ol li {
   margin-bottom: 0.5em;
 }
 /* line 339, ../scss/default.scss */
-ul li ul {
+ul li ul,
+ol li ol {
   margin-left: 2em;
   margin-bottom: 0;
 }
@@ -513,7 +521,8 @@ ul > li:before {
   font-weight: 600;
 }
 /* line 357, ../scss/default.scss */
-ul ul {
+ul ul,
+ol ol {
   margin-top: .5em;
 }
 
