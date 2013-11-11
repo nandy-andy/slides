@@ -144,6 +144,7 @@ URL: https://code.google.com/p/io-2012-slides
         <ul>
           <li>w 1997 PHP/FI 2.0 było nadal słabo wydajne i mimo wielu dodatkowych funkcjonalności brakowało mu tych, które mogłyby pomóc w tworzeniu eCommerce</li>
           <li>te minusy strasznie przeszkadzały chłopakom przy ich uczelnianym projekcie, skonktaktowali się z Rasmusem i zaproponowali kompletne przepisanie parsera PHP</li>
+          <li>Paamayim Nekudotayim; double-colon - in Hebrew</li>
         </ul>
       </section>
     </aside>
@@ -223,67 +224,27 @@ class WallController extends ArticleCommentsModule {
     </hgroup>
     <article>
       <ul class="build fade">
-        <li>możliwość używania HTTP jako protokół stanowy (ciasteczka, sesje),</li>
-        <li>możliwość nawiązania połączenia z bazami danych (mysql_*, PDO),</li>
-        <li>możliwość manipulacji na dokumnetach XML,</li>
-        <li>możliwość przesyłania plików na serwer,</li>
-        <li>możliwość przetwarzania obrazków (GD2, ImageMagick, GMagick),</li>
-        <li>możliwość przetwarzania plików dźwiękowych.</li>
+        <li>PHP 5.0 - lipiec 2004</li>
+        <li>PHP 5.1 - listopad 2005</li>
+        <li>PHP 5.3 - czerwiec 2009</li>
+        <li>PHP 5.4 - marzec 2012</li>
+        <li>PHP 5.5 - czerwiec 2013</li>
       </ul>
     </article>
     <aside class="note">
       <section>
         <ul>
-          <li>długi development i kilka nietrafionych dat premiery</li>
-          <li>skupiony głównie na zmianie jaką było użycie nowego silnika Zend Engine 2.0</li>
+          <li>5.0: długi development i kilka nietrafionych dat premiery, w końcu opublikowana w połowie 2004</li>
+          <li>5.0: skupiony głównie na zmianie jaką było użycie nowego silnika Zend Engine 2.0 (performance)</li>
+          <li>5.0: zmieniony "object model" (referencje zamiast wartości, klasy abstrakcyjne, interfejsy, metody magiczne, final)</li>
+          <li>5.1: ponownie poprawa wydajności, poprawa obsługi dat, PDO włączone domyślnie, ponad 400 bugfixów</li>
+          <li>5.2: bugfixy
+          <li>5.3: interesujące ficzery: namespaces, late static bindings, lambda functions</li>
+          <li>5.4: interesujące ficzery: [], (new Foo)->bar(), traits, rozserzenie sesji może śledzić postęp uploadu, wbudowany webserver w CLI</li>
+          <li>5.5: interesujące ficzery: generatory = yeild, finally in try-catch, ::class, OPcache, imageflip(), imagecrop()</li>
         </ul>
       </section>
     </aside>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>PHP 5.1</h2>
-    </hgroup>
-    <article>
-       <pre class="prettyprint" data-lang="php">//TODO</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>PHP 5.2</h2>
-    </hgroup>
-    <article>
-       <pre class="prettyprint" data-lang="php">//TODO</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>PHP 5.3</h2>
-    </hgroup>
-    <article>
-       <pre class="prettyprint" data-lang="php">//TODO</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>PHP 5.4</h2>
-    </hgroup>
-    <article>
-       <pre class="prettyprint" data-lang="php">//TODO</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>PHP 5.5</h2>
-    </hgroup>
-    <article>
-       <pre class="prettyprint" data-lang="php">//TODO</pre>
-    </article>
   </slide>
 
   <slide class="black nobackground">
@@ -408,13 +369,6 @@ $propertiesArr = array('sex', 'name', 'surname', 'class');
 echo $s-&gt;$property . ' ';
 echo $s-&gt;$propertiesArr[2];</pre>
     </article>
-    <aside class="note">
-      <section>
-        <ul>
-          <li></li>
-        </ul>
-      </section>
-    </aside>
   </slide>
 
   <slide>
@@ -448,13 +402,6 @@ echo $s-&gt;$propertiesArr[2];</pre>
                 </li>
             </ol>
     </article>
-    <aside class="note">
-      <section>
-        <ul>
-          <li></li>
-        </ul>
-      </section>
-    </aside>
   </slide>
 
   <slide>
@@ -485,13 +432,6 @@ $array = array(
 </pre></li>
 </ul>
     </article>
-    <aside class="note">
-      <section>
-        <ul>
-          <li></li>
-        </ul>
-      </section>
-    </aside>
   </slide>
 
   <slide>
@@ -521,13 +461,6 @@ object(stdClass)#1 (3) {
 </pre></li>
             </ul>
     </article>
-    <aside class="note">
-      <section>
-        <ul>
-          <li></li>
-        </ul>
-      </section>
-    </aside>
   </slide>
 
   <slide class="title-slide segue nobackground">
@@ -561,15 +494,6 @@ object(stdClass)#1 (3) {
     </hgroup>
     <article>
       <footer class="source white">http://www.lafermeduweb.net/images/billets/2010-11/rasmus_lerdorf_forumphp.jpg</footer>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Spójność</h2>
-    </hgroup>
-    <article>
-      <pre class="prettyprint" data-lang="php">//TODO</pre>
     </article>
   </slide>
 
@@ -708,7 +632,7 @@ object(stdClass)#1 (3) {
       <section>
         <ul>
           <li>warto być dostosowanym do rynku pracy,</li>
-          <li>poza tym społeczność skupiona w okól języka dojrzewa (testy -- TDD, BDD; SOLID)</li>
+          <li>poza tym społeczność skupiona wokół języka dojrzewa (testy -- TDD, BDD; SOLID)</li>
         </ul>
       </section>
     </aside>
@@ -729,7 +653,7 @@ object(stdClass)#1 (3) {
     <aside class="note">
       <section>
         <ul>
-          <li>język programowania to tylko narzędzie -- warto uczyć się ich wielu,</li>
+          <li>język programowania to tylko narzędzie -- warto uczyć się ich wielu</li>
         </ul>
       </section>
     </aside>
