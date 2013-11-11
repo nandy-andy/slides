@@ -1458,3 +1458,11 @@ aside.gdbar img {
     font-family: monospace !important;
   }
 }
+
+.unformated {
+  border: none;
+}
+
+.unformated tr:nth-child(2n+1) {
+  background: none;
+}
