@@ -298,6 +298,11 @@ slides > slide.far-next {
 slides > slide.dark {
   background: #515151 !important;
 }
+
+slides > slide.black {
+  background: #000 !important;
+}
+
 /* line 171, ../scss/default.scss */
 slides > slide:not(.nobackground):before {
   font-size: 12pt;

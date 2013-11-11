@@ -164,6 +164,10 @@ slides > slide {
     background: $gray-4 !important;
   }
 
+  &.black {
+    background: #000 !important;
+  }
+
   &:not(.nobackground) {
     //background: white url(../../images/google_developers_icon_128.png) ($brand-small-icon-size * 2) 98% no-repeat;
     //@include background-size($brand-small-icon-size $brand-small-icon-size);
