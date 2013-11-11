@@ -174,7 +174,7 @@ class WallController extends ArticleCommentsModule {
     private $helper;
     protected $allowedNamespaces = array();
     protected $sortingType = 'index';
-    const WALL_MESSAGE_RELATIVE_TIMESTAMP = 604800; // relative message timestampt for 7 days (improvement 20178)
+    const WALL_MESSAGE_RELATIVE_TIMESTAMP = 604800; // relative message timestamp for 7 days (improvement 20178)
 
     public function __construct() {
         $this->app = F::App();
