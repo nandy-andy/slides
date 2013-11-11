@@ -68,8 +68,18 @@ URL: https://code.google.com/p/io-2012-slides
          <li>ogromnie popularny</li>
          <li>głównie wykorzystywany "w rozwoju sieci"</li>
        </ul>
+       <ul class="build fade">
+         <li>"PHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the largest social networking site in the world."</li>
+       </ul>
        <footer class="source white">http://www.php.net/manual/en/preface.php</footer>
     </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>TODO: statystyki popularności?</li>
+        </ul>
+      </section>
+    </aside>
   </slide>
 
   <slide class="title-slide segue nobackground">
@@ -88,10 +98,11 @@ URL: https://code.google.com/p/io-2012-slides
     <aside class="note">
       <section>
         <ul>
-          <li>Rasmus Lerdorf</li>
-          <li>twórca PHP</li>
-          <li>Forms Interpreter</li>
-          <li>dość kontrowersyjne podejście do rozwoju języka: model (db), widok (html), kontroler (php)</li>
+          <li>Rasmus Lerdorf - w 1994 stowrzył "Personal Home Page Tools" (PHP Tools), aby śledzić ruch na swojej stronie z CV</li>
+          <li>w 1995 przepisał od podstaw, dodał możliwość łączenia z DB i udostępnił kod publicznie</li>
+          <li>we wrześniu 1995 zrezygnował z nazy PHP na rzecz Forms Interpretera - przypominająca mocno Perla i posiadająca podstawowe ficzery PHP,</li>
+          <li>FI się nie przyjął jako język raczej jako dodatek do skryptów CGI dlatego w październiku 1995 Lerdorf wydaje jeszcze raz przepisany od podstaw nowy język i wraca do nazwy PHP; nazywa go: Personal Home Page Construction Kit - zaawansowany interfejs skrytpowy ze składnią z C, Perla i podobnych języków,</li>
+          <li>w kwietniu 1996 kod został przepisany ponownie i wydany jako PHP/FI, którego implementacja ewoluowała z zestawu narzędzi do prawdziwego języka webowego (DBM, cookies, możliwość pisania funkcji)</li>
         </ul>
       </section>
     </aside>
@@ -131,8 +142,8 @@ URL: https://code.google.com/p/io-2012-slides
     <aside class="note">
       <section>
         <ul>
-          <li>twórcy Zenda,</li>
-          <li>pochodzą z Izraela (T_PAAMAYIM_NEKUDOTAYIM)</li>
+          <li>w 1997 PHP/FI 2.0 było nadal słabo wydajne i mimo wielu dodatkowych funkcjonalności brakowało mu tych, które mogłyby pomóc w tworzeniu eCommerce</li>
+          <li>te minusy strasznie przeszkadzały chłopakom przy ich uczelnianym projekcie, skonktaktowali się z Rasmusem i zaproponowali kompletne przepisanie parsera PHP</li>
         </ul>
       </section>
     </aside>
@@ -162,6 +173,15 @@ class Title {
     var $mBacklinkCache = null; ///< Cache of links to this title
     //@}</pre>
     </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>w połowie 1998 ogłosili w Internecie powstanie PHP Development Teamu i udostępnili nowy język, którego nazwa brzmiała PHP i była rekrusywnym akronimem znanym dzisiaj (jednocześnie ogłosili zakończenie wsparcia dla PHP/FI)</li>
+          <li>największą zaletą była rozszerzalność</li>
+          <li>mówi się, że PHP 3.0 było zainstalowane na ok. 10% serwerów</li>
+        </ul>
+      </section>
+    </aside>
   </slide>
 
   <slide>
@@ -186,6 +206,15 @@ class WallController extends ArticleCommentsModule {
     }
 //...</pre>
     </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>jeszcze przed zimą 1998 zaczęli przepisywać jądro PHP, aby zyskać lepszą wydajność dla większych aplikacji i zwiększyć modularność kodu źródłowego</li>
+          <li>nowy przepisany silnik spełnia te założenia i zostaje nazwany: Zend Engine</li>
+          <li>w maju 2000 roku PHP 4 oparty na tym silniku i z masą dodatkowych funkcjonalności (wsparcie dla wielu serwerów, buferowanie wyjścia, sesje HTTP, bardziej bezpieczną obsługą danych wprowadzanych przez użytkownika i kilkunastoma nowymi kunstrukcjami w samej składni) zostaje opublikowany</li>
+        </ul>
+      </section>
+    </aside>
   </slide>
 
   <slide>
@@ -202,6 +231,14 @@ class WallController extends ArticleCommentsModule {
         <li>możliwość przetwarzania plików dźwiękowych.</li>
       </ul>
     </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>długi development i kilka nietrafionych dat premiery</li>
+          <li>skupiony głównie na zmianie jaką było użycie nowego silnika Zend Engine 2.0</li>
+        </ul>
+      </section>
+    </aside>
   </slide>
 
   <slide>
@@ -516,32 +553,6 @@ object(stdClass)#1 (3) {
         </ul>
       </section>
     </aside>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Może się to jednak skończyć źle...</h2>
-    </hgroup>
-    <article>
-       <pre class="prettyprint" data-lang="php">&lt;?php
-$i = 0;
-$data = array(
-    array('Skipper', 'Tom McGrath', 'leader'), 
-    array('Kowalski', 'Jeff Bennett', 'strategist'), 
-    array('Private', 'James Patrick Stuart', 'newbie'), 
-    array('Rico', 'John DiMaggio', ' weapons specialist')
-);
-echo '&lt;table collspan=&quot;1&quot; border=&quot;1&quot; cellpadding="1"&gt;';
-echo '&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;Voice&lt;/td&gt;&lt;td&gt;Role&lt;/td&gt;&lt;/tr&gt;';
-foreach($data as $penguin) {
-    echo &quot;&lt;tr&gt;&lt;td&gt;$panguin[0]&lt;/td&gt;&lt;td&gt;$panguin[1]&lt;/td&gt;
-    &lt;td&gt;$panguin[2]&lt;/td&gt;&lt;/tr&gt;&&quot;;
-}
-$i++;
-echo '&lt;/table&gt;';
-?&gt;
-</pre>
-    </article>
   </slide>
 
   <slide class="fill nobackground" style="background-image: url(images/spaghetti.jpg); background-size: 100% 100%;">
