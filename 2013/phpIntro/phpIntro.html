@@ -99,37 +99,10 @@ URL: https://code.google.com/p/io-2012-slides
       <section>
         <ul>
           <li>Rasmus Lerdorf - w 1994 stowrzył "Personal Home Page Tools" (PHP Tools), aby śledzić ruch na swojej stronie z CV</li>
-          <li>w 1995 przepisał od podstaw, dodał możliwość łączenia z DB i udostępnił kod publicznie</li>
-          <li>we wrześniu 1995 zrezygnował z nazy PHP na rzecz Forms Interpretera - przypominająca mocno Perla i posiadająca podstawowe ficzery PHP,</li>
-          <li>FI się nie przyjął jako język raczej jako dodatek do skryptów CGI dlatego w październiku 1995 Lerdorf wydaje jeszcze raz przepisany od podstaw nowy język i wraca do nazwy PHP; nazywa go: Personal Home Page Construction Kit - zaawansowany interfejs skrytpowy ze składnią z C, Perla i podobnych języków,</li>
-          <li>w kwietniu 1996 kod został przepisany ponownie i wydany jako PHP/FI, którego implementacja ewoluowała z zestawu narzędzi do prawdziwego języka webowego (DBM, cookies, możliwość pisania funkcji)</li>
+          <li>Personal Home Page Tools, Forms Iterpreter, Personal Home Page Construction Kit, PHP/FI</li>
         </ul>
       </section>
     </aside>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>PHP/FI</h2>
-    </hgroup>
-    <article>
-       <pre class="prettyprint" data-lang="php/fi">
-&lt;!--include /text/header.html--&gt;
-
-&lt;!--getenv HTTP_USER_AGENT--&gt;
-&lt;!--ifsubstr $exec_result Mozilla--&gt;
-  Hey, you are using Netscape!
-&lt;!--endif--&gt;
-                  
-&lt;!--sql database select * from table where user='$username'--&gt;
-&lt;!--ifless $numentries 1--&gt;
-  Sorry, that record does not exist
-&lt;!--endif exit--&gt;
-  Welcome &lt;!--$user--&gt;!
-  You have &lt;!--$index:0--&gt; credits left in your account.
-
-&lt;!--include /text/footer.html--&gt;</pre>
-    </article>
   </slide>
 
   <slide class="fill nobackground" style="background-image: url(images/gutmans_suraski.jpg)">
@@ -143,8 +116,7 @@ URL: https://code.google.com/p/io-2012-slides
       <section>
         <ul>
           <li>w 1997 PHP/FI 2.0 było nadal słabo wydajne i mimo wielu dodatkowych funkcjonalności brakowało mu tych, które mogłyby pomóc w tworzeniu eCommerce</li>
-          <li>te minusy strasznie przeszkadzały chłopakom przy ich uczelnianym projekcie, skonktaktowali się z Rasmusem i zaproponowali kompletne przepisanie parsera PHP</li>
-          <li>Paamayim Nekudotayim; double-colon - in Hebrew</li>
+          <li>wraz z Rasmusem stworzyli PHP Development Team</li>
         </ul>
       </section>
     </aside>
@@ -152,96 +124,47 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>PHP 3</h2>
+      <h2>PHP</h2>
     </hgroup>
-    <article>
-       <pre class="prettyprint" data-lang="php">
+    <article class="smaller">
+       <pre class="prettyprint" data-lang="php/fi">
+&lt;!--getenv HTTP_USER_AGENT--&gt;
+&lt;!--ifsubstr $exec_result Mozilla--&gt;
+  Hey, you are using Netscape!
+&lt;!--endif--&gt;</pre>
+<pre class="prettyprint" data-lang="php 3">
 class Title {
-//...
-    /**
-     * @name Private member variables
-     * Please use the accessor functions instead.
-     * @private
-     */
-    //@{
-    var $mTextform = '';       ///< Text form (spaces not underscores) of the main part
-    var $mUrlform = '';        ///< URL-encoded form of the main part
-    var $mDbkeyform = '';      ///< Main part with underscores
-//...
-    var $mNamespace = NS_MAIN;
-    var $mLength = -1;          ///< The page length, 0 for special pages
-    var $mRedirect = null;      ///< Is the article at this title a redirect?
-    var $mBacklinkCache = null; ///< Cache of links to this title
-    //@}</pre>
-    </article>
-    <aside class="note">
-      <section>
-        <ul>
-          <li>w połowie 1998 ogłosili w Internecie powstanie PHP Development Teamu i udostępnili nowy język, którego nazwa brzmiała PHP i była rekrusywnym akronimem znanym dzisiaj (jednocześnie ogłosili zakończenie wsparcia dla PHP/FI)</li>
-          <li>największą zaletą była rozszerzalność</li>
-          <li>mówi się, że PHP 3.0 było zainstalowane na ok. 10% serwerów</li>
-        </ul>
-      </section>
-    </aside>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>PHP 4</h2>
-    </hgroup>
-    <article>
-       <pre class="prettyprint" data-lang="php">
+    var $mTextform = '';
+    var $mDbkeyform = '';
+    function getTitleFromId( $id ) {
+    // ...
+    }
+}</pre>
+<pre class="prettyprint" data-lang="php 5">
 class WallController extends ArticleCommentsModule {
     private $helper;
-    protected $allowedNamespaces = array();
     protected $sortingType = 'index';
-    const WALL_MESSAGE_RELATIVE_TIMESTAMP = 604800; // relative message timestamp for 7 days (improvement 20178)
-
+    const WALL_MESSAGE_RELATIVE_TIMESTAMP = 604800;
     public function __construct() {
-        $this->app = F::App();
-        $this->allowedNamespaces = $this->app->getLocalRegistry()->get('UserProfileNamespaces');
+        // ...
     }
-    
     public function init() {
-        $this->helper = F::build('WallHelper', array());
+	// ...
     }
-//...</pre>
+}</pre>
     </article>
     <aside class="note">
       <section>
         <ul>
-          <li>jeszcze przed zimą 1998 zaczęli przepisywać jądro PHP, aby zyskać lepszą wydajność dla większych aplikacji i zwiększyć modularność kodu źródłowego</li>
-          <li>nowy przepisany silnik spełnia te założenia i zostaje nazwany: Zend Engine</li>
-          <li>w maju 2000 roku PHP 4 oparty na tym silniku i z masą dodatkowych funkcjonalności (wsparcie dla wielu serwerów, buferowanie wyjścia, sesje HTTP, bardziej bezpieczną obsługą danych wprowadzanych przez użytkownika i kilkunastoma nowymi kunstrukcjami w samej składni) zostaje opublikowany</li>
-        </ul>
-      </section>
-    </aside>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>PHP 5</h2>
-    </hgroup>
-    <article>
-      <ul class="build fade">
-        <li>PHP 5.0 - lipiec 2004</li>
-        <li>PHP 5.1 - listopad 2005</li>
-        <li>PHP 5.3 - czerwiec 2009</li>
-        <li>PHP 5.4 - marzec 2012</li>
-        <li>PHP 5.5 - czerwiec 2013</li>
-      </ul>
-    </article>
-    <aside class="note">
-      <section>
-        <ul>
-          <li>5.0: długi development i kilka nietrafionych dat premiery, w końcu opublikowana w połowie 2004</li>
+          <li>w maju 2000 roku PHP 4 oparty na nowym silniku Zend Engine i z masą dodatkowych funkcjonalności (wsparcie dla wielu serwerów, buferowanie wyjścia, sesje HTTP, bardziej bezpieczną obsługą danych wprowadzanych przez użytkownika i kilkunastoma nowymi kunstrukcjami w samej składni) zostaje opublikowany</li>
+          <li>w 2004 roku pojawia sie PHP 5.0 (długi development i kilka nietrafionych dat premiery)</li>
           <li>5.0: skupiony głównie na zmianie jaką było użycie nowego silnika Zend Engine 2.0 (performance)</li>
-          <li>5.0: zmieniony "object model" (referencje zamiast wartości, klasy abstrakcyjne, interfejsy, metody magiczne, final)</li>
+          <li>5.0: zmieniony "object model" (klasy abstrakcyjne, interfejsy, metody magiczne, final, referencje zamiast wartości)</li>
           <li>5.1: ponownie poprawa wydajności, poprawa obsługi dat, PDO włączone domyślnie, ponad 400 bugfixów</li>
           <li>5.2: bugfixy</li>
-          <li>5.3: interesujące ficzery: namespaces, late static bindings, lambda functions</li>
-          <li>5.4: interesujące ficzery: [], (new Foo)->bar(), traits, rozserzenie sesji może śledzić postęp uploadu, wbudowany webserver w CLI</li>
-          <li>5.5: interesujące ficzery: generatory = yeild, finally in try-catch, ::class, OPcache, imageflip(), imagecrop()</li>
+          <li>5.3: interesujące ficzery: namespaces, lambda functions, late static bindings</li>
+          <li>5.4: interesujące ficzery: [], rozserzenie sesji może śledzić postęp uploadu, wbudowany webserver w CLI, traits, (new Foo)->bar()</li>
+          <li>5.5: interesujące ficzery: generatory = yeild, finally in try-catch, imageflip(), imagecrop(), ::class, OPcache</li>
         </ul>
       </section>
     </aside>
@@ -351,28 +274,6 @@ if ($expression) {
 
   <slide>
     <hgroup>
-      <h2>Zmienne</h2>
-    </hgroup>
-    <article>
-      <pre class="prettyprint" data-lang="php">$a = 'welcome';
-$$a = 'AKAI'; //echo $welcome; --> AKAI
-echo &quot;$a ${$a}&quot;</pre>
-                 <pre class="prettyprint" data-lang="php">class Student {
-    public $sex = 'male';
-    public $name = 'Steve';
-    public $surname = 'Kowalsky';
-    public $class = 'geography';
-}
-$s = new Student();
-$property = 'name';
-$propertiesArr = array('sex', 'name', 'surname', 'class');
-echo $s-&gt;$property . ' ';
-echo $s-&gt;$propertiesArr[2];</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
       <h2>Typy danych</h2>
     </hgroup>
     <article>
@@ -404,63 +305,22 @@ echo $s-&gt;$propertiesArr[2];</pre>
     </article>
   </slide>
 
-  <slide>
+  <slide class="title-slide segue nobackground">
     <hgroup>
-      <h2>Typy danych</h2>
+      <h1>Live coding</h1><br/><br/><br /><br /><br />
     </hgroup>
-    <article>
-       <pre class="prettyprint" data-lang="php">
-&lt;?php                      &lt;?php // od PHP 5.4
-$array = array(               $array = [
-    "foo" =&gt; "bar",            "foo" =&gt; "bar",
-    "bar" =&gt; "foo",            "bar" =&gt; "foo"  
-);                            ];
-?&gt;                         ?&gt;</pre>
-<pre class="prettyprint" data-lang="php">
-$array = array(
-    1    => "a",
-    "1"  => "b",
-    1.5  => "c",
-    true => "d",
-);
-</pre>
-<ul class="build code">
-                <li><pre class="prettyprint" data-lang="php">
-/*array(1) {
-  [1]=> string(1) "d"
-}*/
-</pre></li>
-</ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Typy danych</h2>
-    </hgroup>
-    <article>
-      <ul class="build">
-                <li><pre class="prettyprint" data-lang="php">
-$object = (object) 'AKAI';
-</pre></li>
-            <li><pre class="prettyprint" data-lang="php">
-echo $object->scalar; //output: AKAI
-</pre></li>
-            <li><pre class="prettyprint" data-lang="php">
-$arr = (object) array('AKAI', 1, 'WIKIA');
-/*
-object(stdClass)#1 (3) {
-  [0]=>
-  string(4) "AKAI"
-  [1]=>
-  int(1)
-  [2]=>
-  string(5) "WIKIA"
-}
-*/
-</pre></li>
-            </ul>
-    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>podwójny dwukropek po hebrajsku self::self::a();</li>
+          <li>string_magic.php</li>
+          <li>object.php</li>
+          <li>array_trap.php</li>
+          <li>co się dzieje w PHP, gdy rzutujemy string na objekt?</li>
+          <li>co się dzieje w PHP, gdy rzutujemy tablice na objekt?</li>
+        </ul>
+      </section>
+    </aside>
   </slide>
 
   <slide class="title-slide segue nobackground">
@@ -610,50 +470,6 @@ object(stdClass)#1 (3) {
     </article>
   </slide>
 
-  <slide>
-    <hgroup>
-      <h2>Testy jednostkowe</h2>
-    </hgroup>
-    <article class="smaller">
-      <pre class="prettyprint" data-lang="php" style="height: 300px; overflow: scroll;">class UserIdentityBoxTest extends WikiaBaseTest {
-    /**
-     * @dataProvider checkIfDisplayZeroStatesDataProvider
-     */
-    public function testCheckIfDisplayZeroStates($data, $expectedResult) {
-        $userIdentityBox = new UserIdentityBox(F::app(), $this->getMock('User'), self::TOP_WIKI_LIMIT);
-        $this->assertEquals($expectedResult, $userIdentityBox->checkIfDisplayZeroStates($data));
-    }    
-
-    public function checkIfDisplayZeroStatesDataProvider() {
-        return array(
-            //data is an empty array
-	    	array(
-		        array(),
-		        true
-	    	),
-            //all "important" data set
-            array(
-                array(
-                    'location' => 'Poznań', 
-                    'occupation' => 'Programmer', 
-                    'birthday' => '1985-07-10', 
-                    'gender' => 'Male', 
-                    'website' => 'http://www.example.com', 
-                    'twitter' => 'http://www.twitter.com/#/test', 
-                    'topWikis' => array(1, 2, 3, 123, 4365),
-                ),
-                false,
-            ),
-        );
-    }
-//...
-}</pre>
-      <ul class="build">
-        <li><img src="./images/unit_tests.png" width="448" height="225" style="margin-left: 220px;" /></li>
-      </ul>
-    </article>
-  </slide>
-
   <slide class="title-slide segue nobackground">
     <hgroup>
       <h1>Czy warto zainteresować się PHP?</h1><br/><br/><br /><br /><br />
@@ -688,18 +504,19 @@ object(stdClass)#1 (3) {
           <th><img src="./images/logo_pracujpl.png" width="158" height="44" /></th>
         </tr>
         <tr class="highlight">
-          <td>php</td><td>35</td><td>514</td><td>74</td><td>372</td>
+          <td>php</td><td>55</td><td>532</td><td>89</td><td>322</td>
         </tr>
         <tr>
-          <td>python</td><td>29</td><td>165</td><td>72</td><td>201</td>
+          <td>python</td><td>37</td><td>173</td><td>98</td><td>202</td>
         </tr>
         <tr>
-          <td>ruby</td><td>10</td><td>80</td><td>39</td><td>76</td>
+          <td>ruby</td><td>14</td><td>79</td><td>48</td><td>78</td>
+        </tr>
+        <tr>
+          <td>perl</td><td>21</td><td>88</td><td>79</td><td>139</td>
         </tr>
       </table>
-      <p style="font-size: small;">Dane z dnia 11 listopada 2013.</p>
-      <br />
-      <br />
+      <p style="font-size: small;">Dane z dnia 20 listopada 2013.</p>
       <br />
       <br />
       <p><a href="http://php.net/usage.php">http://php.net/usage.php</a></p>
