@@ -99,37 +99,10 @@ URL: https://code.google.com/p/io-2012-slides
       <section>
         <ul>
           <li>Rasmus Lerdorf - w 1994 stowrzył "Personal Home Page Tools" (PHP Tools), aby śledzić ruch na swojej stronie z CV</li>
-          <li>w 1995 przepisał od podstaw, dodał możliwość łączenia z DB i udostępnił kod publicznie</li>
-          <li>we wrześniu 1995 zrezygnował z nazy PHP na rzecz Forms Interpretera - przypominająca mocno Perla i posiadająca podstawowe ficzery PHP,</li>
-          <li>FI się nie przyjął jako język raczej jako dodatek do skryptów CGI dlatego w październiku 1995 Lerdorf wydaje jeszcze raz przepisany od podstaw nowy język i wraca do nazwy PHP; nazywa go: Personal Home Page Construction Kit - zaawansowany interfejs skrytpowy ze składnią z C, Perla i podobnych języków,</li>
-          <li>w kwietniu 1996 kod został przepisany ponownie i wydany jako PHP/FI, którego implementacja ewoluowała z zestawu narzędzi do prawdziwego języka webowego (DBM, cookies, możliwość pisania funkcji)</li>
+          <li>Personal Home Page Tools, Forms Iterpreter, Personal Home Page Construction Kit, PHP/FI</li>
         </ul>
       </section>
     </aside>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>PHP/FI</h2>
-    </hgroup>
-    <article>
-       <pre class="prettyprint" data-lang="php/fi">
-&lt;!--include /text/header.html--&gt;
-
-&lt;!--getenv HTTP_USER_AGENT--&gt;
-&lt;!--ifsubstr $exec_result Mozilla--&gt;
-  Hey, you are using Netscape!
-&lt;!--endif--&gt;
-                  
-&lt;!--sql database select * from table where user='$username'--&gt;
-&lt;!--ifless $numentries 1--&gt;
-  Sorry, that record does not exist
-&lt;!--endif exit--&gt;
-  Welcome &lt;!--$user--&gt;!
-  You have &lt;!--$index:0--&gt; credits left in your account.
-
-&lt;!--include /text/footer.html--&gt;</pre>
-    </article>
   </slide>
 
   <slide class="fill nobackground" style="background-image: url(images/gutmans_suraski.jpg)">
@@ -143,8 +116,7 @@ URL: https://code.google.com/p/io-2012-slides
       <section>
         <ul>
           <li>w 1997 PHP/FI 2.0 było nadal słabo wydajne i mimo wielu dodatkowych funkcjonalności brakowało mu tych, które mogłyby pomóc w tworzeniu eCommerce</li>
-          <li>te minusy strasznie przeszkadzały chłopakom przy ich uczelnianym projekcie, skonktaktowali się z Rasmusem i zaproponowali kompletne przepisanie parsera PHP</li>
-          <li>Paamayim Nekudotayim; double-colon - in Hebrew</li>
+          <li>wraz z Rasmusem stworzyli PHP Development team</li>
         </ul>
       </section>
     </aside>
@@ -152,60 +124,34 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>PHP 3</h2>
+      <h2>PHP</h2>
     </hgroup>
-    <article>
-       <pre class="prettyprint" data-lang="php">
+    <article class="smaller">
+       <pre class="prettyprint" data-lang="php/fi">
+&lt;!--getenv HTTP_USER_AGENT--&gt;
+&lt;!--ifsubstr $exec_result Mozilla--&gt;
+  Hey, you are using Netscape!
+&lt;!--endif--&gt;</pre>
+<pre class="prettyprint" data-lang="php 3">
 class Title {
-//...
-    /**
-     * @name Private member variables
-     * Please use the accessor functions instead.
-     * @private
-     */
-    //@{
-    var $mTextform = '';       ///< Text form (spaces not underscores) of the main part
-    var $mUrlform = '';        ///< URL-encoded form of the main part
-    var $mDbkeyform = '';      ///< Main part with underscores
-//...
-    var $mNamespace = NS_MAIN;
-    var $mLength = -1;          ///< The page length, 0 for special pages
-    var $mRedirect = null;      ///< Is the article at this title a redirect?
-    var $mBacklinkCache = null; ///< Cache of links to this title
-    //@}</pre>
-    </article>
-    <aside class="note">
-      <section>
-        <ul>
-          <li>w połowie 1998 ogłosili w Internecie powstanie PHP Development Teamu i udostępnili nowy język, którego nazwa brzmiała PHP i była rekrusywnym akronimem znanym dzisiaj (jednocześnie ogłosili zakończenie wsparcia dla PHP/FI)</li>
-          <li>największą zaletą była rozszerzalność</li>
-          <li>mówi się, że PHP 3.0 było zainstalowane na ok. 10% serwerów</li>
-        </ul>
-      </section>
-    </aside>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>PHP 4</h2>
-    </hgroup>
-    <article>
-       <pre class="prettyprint" data-lang="php">
+    var $mTextform = '';
+    var $mDbkeyform = '';
+    function getTitleFromId( $id ) {
+    // ...
+    }
+}</pre>
+<pre class="prettyprint" data-lang="php 5">
 class WallController extends ArticleCommentsModule {
     private $helper;
-    protected $allowedNamespaces = array();
     protected $sortingType = 'index';
-    const WALL_MESSAGE_RELATIVE_TIMESTAMP = 604800; // relative message timestamp for 7 days (improvement 20178)
-
+    const WALL_MESSAGE_RELATIVE_TIMESTAMP = 604800;
     public function __construct() {
-        $this->app = F::App();
-        $this->allowedNamespaces = $this->app->getLocalRegistry()->get('UserProfileNamespaces');
+        // ...
     }
-    
     public function init() {
-        $this->helper = F::build('WallHelper', array());
+	// ...
     }
-//...</pre>
+}</pre>
     </article>
     <aside class="note">
       <section>
@@ -213,27 +159,6 @@ class WallController extends ArticleCommentsModule {
           <li>jeszcze przed zimą 1998 zaczęli przepisywać jądro PHP, aby zyskać lepszą wydajność dla większych aplikacji i zwiększyć modularność kodu źródłowego</li>
           <li>nowy przepisany silnik spełnia te założenia i zostaje nazwany: Zend Engine</li>
           <li>w maju 2000 roku PHP 4 oparty na tym silniku i z masą dodatkowych funkcjonalności (wsparcie dla wielu serwerów, buferowanie wyjścia, sesje HTTP, bardziej bezpieczną obsługą danych wprowadzanych przez użytkownika i kilkunastoma nowymi kunstrukcjami w samej składni) zostaje opublikowany</li>
-        </ul>
-      </section>
-    </aside>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>PHP 5</h2>
-    </hgroup>
-    <article>
-      <ul class="build fade">
-        <li>PHP 5.0 - lipiec 2004</li>
-        <li>PHP 5.1 - listopad 2005</li>
-        <li>PHP 5.3 - czerwiec 2009</li>
-        <li>PHP 5.4 - marzec 2012</li>
-        <li>PHP 5.5 - czerwiec 2013</li>
-      </ul>
-    </article>
-    <aside class="note">
-      <section>
-        <ul>
           <li>5.0: długi development i kilka nietrafionych dat premiery, w końcu opublikowana w połowie 2004</li>
           <li>5.0: skupiony głównie na zmianie jaką było użycie nowego silnika Zend Engine 2.0 (performance)</li>
           <li>5.0: zmieniony "object model" (referencje zamiast wartości, klasy abstrakcyjne, interfejsy, metody magiczne, final)</li>
