@@ -470,50 +470,6 @@ if ($expression) {
     </article>
   </slide>
 
-  <slide>
-    <hgroup>
-      <h2>Testy jednostkowe</h2>
-    </hgroup>
-    <article class="smaller">
-      <pre class="prettyprint" data-lang="php" style="height: 300px; overflow: scroll;">class UserIdentityBoxTest extends WikiaBaseTest {
-    /**
-     * @dataProvider checkIfDisplayZeroStatesDataProvider
-     */
-    public function testCheckIfDisplayZeroStates($data, $expectedResult) {
-        $userIdentityBox = new UserIdentityBox(F::app(), $this->getMock('User'), self::TOP_WIKI_LIMIT);
-        $this->assertEquals($expectedResult, $userIdentityBox->checkIfDisplayZeroStates($data));
-    }    
-
-    public function checkIfDisplayZeroStatesDataProvider() {
-        return array(
-            //data is an empty array
-	    	array(
-		        array(),
-		        true
-	    	),
-            //all "important" data set
-            array(
-                array(
-                    'location' => 'Poznań', 
-                    'occupation' => 'Programmer', 
-                    'birthday' => '1985-07-10', 
-                    'gender' => 'Male', 
-                    'website' => 'http://www.example.com', 
-                    'twitter' => 'http://www.twitter.com/#/test', 
-                    'topWikis' => array(1, 2, 3, 123, 4365),
-                ),
-                false,
-            ),
-        );
-    }
-//...
-}</pre>
-      <ul class="build">
-        <li><img src="./images/unit_tests.png" width="448" height="225" style="margin-left: 220px;" /></li>
-      </ul>
-    </article>
-  </slide>
-
   <slide class="title-slide segue nobackground">
     <hgroup>
       <h1>Czy warto zainteresować się PHP?</h1><br/><br/><br /><br /><br />
