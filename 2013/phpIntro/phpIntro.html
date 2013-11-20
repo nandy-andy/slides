@@ -616,10 +616,14 @@ object(stdClass)#1 (3) {
     </hgroup>
     <article class="smaller">
       <pre class="prettyprint" data-lang="php" style="height: 300px; overflow: scroll;">class UserIdentityBoxTest extends WikiaBaseTest {
+    /**
+     * @dataProvider checkIfDisplayZeroStatesDataProvider
+     */
     public function testCheckIfDisplayZeroStates($data, $expectedResult) {
         $userIdentityBox = new UserIdentityBox(F::app(), $this->getMock('User'), self::TOP_WIKI_LIMIT);
         $this->assertEquals($expectedResult, $userIdentityBox->checkIfDisplayZeroStates($data));
     }    
+
     public function checkIfDisplayZeroStatesDataProvider() {
         return array(
             //data is an empty array
