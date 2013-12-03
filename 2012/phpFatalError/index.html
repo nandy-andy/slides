@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta charset="utf-8">
+      <title>PHP</title>
+      <script src="./assets/js/slides.js"></script>
+      <script src="./assets/js/jquery.js"></script>
+      <style>
+         /* Your individual styles here, or just use inline styles if that’s what you want. */
+         .slides.template-default > article.biglogo {
+            background-image: url("./assets/img/php-logo.png") !important;
+         }
+         .slides.template-default > article:not(.nobackground):not(.biglogo) {
+                background-position-x: 95% !important;
+                background-image: url("./assets/img/wikia-logo.png") !important;
+         }
+         .slides.template-default > article > h3 {
+            color: #0069AC !important;
+         }
+         .slides.template-default strong {
+            color: #0069AC !important;
+         }
+         .slides.template-default th {
+            background-color: #f1f1f1 !important;
+         }
+         .slides.template-default ul {
+            list-style-type: disc; !important;
+         }
+         .slides.template-default li:before {
+            content: ''; !important;
+         }
+         .slides.template-default .col1,
+         .slides.template-default .col2 {
+             display: block;
+             width: 300px;
+             float: left;
+         }
+         .slides.template-default ul#spaghetti {
+             list-style-type: none;
+         }
+         .slides.template-default ul#spaghetti li img.kid {
+             list-style-type: none;
+             position: absolute;
+             top: 150px; 
+             left: 300px;
+             box-shadow: 0px 0px 80px #000;
+         }
+         #silex-logo {
+            color: #000;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 50px;
+            margin-left: 25px;
+         }
+         #flight-logo {
+            color: black;
+            font-family: "Mr Dafoe", Times, serif;
+            font-size: 50px;
+            font-style: italic;
+            margin-left: 25px;
+         }
+      </style>
+      <meta name="viewport" content="width=1100,height=750"><meta name="apple-mobile-web-app-capable" content="yes">
+   </head>
+   <body style="display: none" class="loaded">
+      <section class="slides layout-regular template-default">
+      <!-- Your slides (<article>s) go here. Delete or comment out the slides below. -->
+         <article class="biglogo current">
+         </article>
+
+         <article class="fill next">
+	         <h3>
+		         Fatal error
+	         </h3>
+                 <img src="./assets/img/booom.jpg" alt="booom" />
+	         <p style="color: #fff;">
+		         Andrzej <strong>'nAndy'</strong> Łukaszewski, Wikia Inc.
+		         <br>
+		         AKAI, 8 maja, 2012
+	         </p>
+                 <div class="source">
+                        <a href="http://journal.georgetown.edu/wp-content/uploads/Operation_Upshot-Knothole_-_Badger_001.jpg">http://journal.georgetown.edu/wp-content/uploads/Operation_Upshot-Knothole_-_Badger_001.jpg</a>
+                 </div>
+         </article>
+
+         <article class="fill far-next">
+	         <h3>
+		         Kim jestem?
+	         </h3>
+	         <ul>
+		       <li>Junior Application Developer <strong class="nandy">@Wikia</strong></li>
+               <li>nandy@wikia-inc.com</li>
+               <li>@nandy_andy</li>
+               <li>http://blog.lukaszewski.it</li>
+	         </ul>
+         </article>
+
+         <article>
+	         <h3>
+		         Plan prezentacji
+	         </h3>
+	         <ol class="build">
+                        <li class="to-build">Wprowadzenie</li>
+                        <li class="to-build">Dlaczego powinniśmy interesować się błędami?</li>
+                        <li class="to-build">Typy błędów</li>
+                        <li class="to-build">Obsługa błędów</li>
+                        <li class="to-build">Co jeszcze można zrobić?</li>
+                 </ol>
+         </article>
+
+         <article class="fill">
+	    <img src="./assets/img/sir_maurice_wilkels.jpg" alt="Sir Maurice Wilkes" />
+            <ul class="build">
+                <li style="background: rgba(255, 255, 255, 0.85); padding: 20px;">
+                        <blockquote>
+                                <q style="font-size: 38px; margin: 0; line-height: 1.5;">As soon as we started programming, we found to our surprise that it wasn't as easy to get programs right as we had thought. (...) a good part of my life was going to be spent finding errors in my own programs.</q>
+                                <cite style="text-align: right; display: block;">Sir Maurice Wilkes</cite>
+                        </blockquote>
+                </li>
+            </ul>
+            <div class="source">
+                <a href="http://www.computerhistory.org/revolution/birth-of-the-computer/4/95">http://www.computerhistory.org/revolution/birth-of-the-computer/4/95</a>
+            </div>
+         </article>
+
+         <article>
+	        <h1>
+		        Dlaczego powinniśmy interesować się błędami?
+	        </h1>
+         </article>
+
+         <article>
+            <p>Błędy w naszych programach są czymś nie pożądanym ze względu na:</p>
+            <ul class="build">
+                <li>koszty jakie generują: koszty ekonomiczne i uruchomieniowe,</li>
+                <li>luki w systemie jakie tworzą,</li>
+                <li>ryzyko zepsucia się systemu lub jego całkowitego zniszczenia,</li>
+                <li>błędy kaskadowe (ang. <i>cascading failure</i>).</li>
+            </ul>
+            <div class="source">
+                <a href="http://www.infoq.com/presentations/Debugging-Production-Systems">http://www.infoq.com/presentations/Debugging-Production-Systems</a>
+            </div>
+         </article>
+
+         <article>
+                <h1>
+		        Typy błędów w PHP
+	        </h1>
+         </article>
+
+         <article>
+            <h3>
+                        Podręcznik PHP
+            </h3>
+            <section>
+                <ul class="build">
+                        <li class="to-build">
+                                Błędy parsera/składniowe <strong>E_PARSER</strong><br />
+                                <pre class="prettyprint" style="margin: 5px 0; width: 750px">PHP Parse error: syntax error, unexpected '=' in test.php on line 2</pre>
+                        </li>
+                        <li class="to-build">
+                                Notices <strong>E_NOTICE</strong>
+                                <pre class="prettyprint" style="margin: 5px 0;width: 750px">PHP Notice: Undefined offset: 0 in test.php on line 4</pre>
+                        </li>
+                        <li class="to-build">
+                                Ostrzeżenia (warnings) <strong>E_WARNING</strong>
+                                <pre class="prettyprint" style="margin: 5px 0;width: 750px">PHP Warning: Invalid argument supplied for foreach() in test.php<br /> on line 3</pre>
+                        </li>
+                        <li class="to-build">
+                                Błędy krytyczne (fatal errors) <strong>E_ERROR</strong>
+                                <pre class="prettyprint" style="margin: 5px 0;width: 750px">PHP Fatal error: Call to undefined function nothing() in test.php on line 3</pre>
+                        </li>
+                        <li class="to-build">
+                                Wyjątki (exceptions)
+                                <pre class="prettyprint" style="margin: 5px 0;width: 750px">PHP Fatal error: Uncaught exception 'Exception' <br />with message 'an exception' in test.php:3</pre>
+                        </li>
+                </ul>
+            </section>
+            <div class="source">
+                <a href="http://www.php.net/manual/en/book.errorfunc.php">http://www.php.net/manual/en/book.errorfunc.php</a>
+            </div>
+         </article>
+
+         <article>
+            <h3>
+                        Życie
+            </h3>
+                <ul>
+                  <li>
+<pre class="prettyprint" style="width: 750px">
+&lt;?php
+   function getMyArrayData() {
+      $data = $memc->get('my-data-in-memc');
+      if( is_null($data) ) {
+         $data = $mysql->selectMyDataFromDB();
+         $memc->set('my-data-in-memc', $data);
+      }
+   
+      return $data;
+   }
+?&gt;</pre>
+</li></ul>
+         </article>
+
+         <article>
+                <ul>
+                  <li>
+<pre class="prettyprint nandyprint" style="width: 750px">
+&lt;?php
+   function getMyArrayData() {
+      $data = $memc->get('my-data-in-memc');
+      if( empty($data) ) {
+         $data = $mysql->selectMyDataFromDB();
+         $memc->set('my-data-in-memc', $data);
+      }
+   
+      return $data;
+   }
+?&gt;</pre>
+</li></ul>
+
+<script type="text/javascript">
+function nandyPrint1() {
+  var i = 17;
+  var j = 27;
+  var color = '#0f0';
+  for(i; i<j; i++) {
+    var selector = '.nandyprint:nth-child(1) span:nth-child(' + i + ')';
+    var el = $(selector).get(0);
+    //console.log('=====');
+    //console.log(el);
+    //console.log('=====');
+    $(el).css('color', color);
+  }
+  
+  if( typeof(console.log) === 'function' ) {
+    console.log('nadnyPrint1 finished.');
+  }
+}
+
+setTimeout('nandyPrint1()', 5000);
+</script>
+         </article>
+
+         <article class="fill">
+                <img src="./assets/img/orly_owl.jpg" alt="oh, really?" />
+         </article>
+
+         <article>
+                <ul>
+                  <li>
+<pre class="prettyprint nandyprint" style="width: 750px">
+&lt;?php
+   function getMyArrayData() {
+      $data = $memc->get('my-data-in-memc');
+      if( empty($data) ) {
+         //what if $mysql->selectMyDataFromDB() returns array()?
+         $data = $mysql->selectMyDataFromDB();
+         $memc->set('my-data-in-memc', $data);
+      }
+   
+      return $data;
+   }
+?&gt;</pre>
+</li></ul>
+<script type="text/javascript">
+function nandyPrint2() {
+  var i = 17;
+  var j = 27;
+  var color = '#f00';
+  for(i; i<j; i++) {
+    var selector = '.nandyprint:nth-child(1) span:nth-child(' + i + ')';
+    var el = $(selector).get(1);
+    //console.log('=====');
+    //console.log(el);
+    //console.log('=====');
+    $(el).css('color', color);
+  }
+  
+  if( typeof(console.log) === 'function' ) {
+    console.log('nadnyPrint2 finished.');
+  }
+}
+
+setTimeout('nandyPrint2()', 5000);
+</script>
+         </article>
+         
+         <article>
+                <h1>
+		            Obsługa błędów w PHP
+	            </h1>
+         </article>
+
+         <article>
+                <h3>
+		            php.ini
+	            </h3>
+                <ul class="build">
+                    <li>dyrektywa <code>error_reporting</code> domyślnie: <code>E_ALL & ~E_NOTICE</code></li>
+                    <li>w PHP5 nowa wartość: <code>E_STRICT</code></li>
+                    <li>dyrektywa <code>display_errors</code> domyślnie: <code>"1"</code></li>
+                    <li>dyrektywa <code>log_errors</code> domyślnie: <code>"0"</code></li>
+                    <li>dyrektywa <code>error_log</code> domyślnie: <code>NULL</code></li>
+                </ul>
+         </article>
+         
+         <article>
+                <h3>
+		            Funkcje
+	            </h3>
+                <ul class="build">
+                    <li><pre class="prettyprint">int error_reporting ([ int $level ] )</pre></li>
+                    <li><pre class="prettyprint">mixed set_error_handler ( 
+   callable $error_handler 
+   [, int $error_types = E_ALL | E_STRICT ] 
+)</pre></li>
+                    <li><pre class="prettyprint">callable set_exception_handler ( callable $exception_handler )</pre></li>
+                    <li><pre class="prettyprint">array debug_backtrace (
+   [ int $options = DEBUG_BACKTRACE_PROVIDE_OBJECT 
+   [, int $limit = 0 ]] 
+)</pre></li>
+                </ul>
+         </article>
+
+         <article>
+                <h3>
+                    Przykład użycia
+	            </h3>
+                <pre class="prettyprint">
+error_reporting = -1
+display_errors = "0"
+log_errors = "1"
+error_log = '/var/www/log/php'</pre>
+                <img src="./assets/img/MediaWiki_Wikia_error.jpg" alt="MediaWiki Wikia Error" />
+         </article>
+
+         <article class="fill">
+                <h3>
+                    Przykład użycia
+	            </h3>
+                <img src="./assets/img/zend.png" />
+                <p>Bootstrap.php</p>
+                <pre style="margin-top: 0;" class="prettyprint">
+public function __construct($application) {
+    parent::__construct($application);
+    MyApp_Error_Handler::set();
+}
+</pre>
+                <p>library/MyApp/Error/Handler.php</p>
+                <pre style="margin-top: 0;" class="prettyprint">
+class MyApp_Error_Handler {
+    public static function handle($errno, $errstr, $errfile, $errline) {
+        if (!error_reporting()) return;
+        throw new Exception($errstr . " in $errfile:$errline". $errno);
+    }
+    public static function set() {
+        set_error_handler(array(__CLASS__, 'handle'));
+    }
+}
+</pre>
+         </article>
+         
+         <article class="fill">
+                <h3>
+                    Przykład użycia
+	            </h3>
+                <img src="./assets/img/error_symfony.jpg" />
+         </article>
+
+         <article class="fill">
+                <h3>
+                    Przykład użycia
+	            </h3>
+                <img src="./assets/img/pan_gabka.jpg" />
+         </article>
+
+         <article>
+                <h1>
+		            Co jeszcze można zrobić?
+	            </h1>
+         </article>
+
+         <article class="fill">
+                <h3>Monitoring</h3>
+                <img src="./assets/img/monitoring_matrix.jpg" />
+         </article>
+
+         <article>
+                <h3>Podział środowisk cz.1</h3>
+                <img style="margin-left: 140px;" src="./assets/img/dev_test_prod_servers.gif" />
+                <ul class="build">
+                    <li>system wersjonowania danych (SVN, GIT, Mercurial),</li>
+                    <li>deweloperzy pracują na katalogu <i>trunk</i> w ciągu tygodnia,</li>
+                    <li>raz w tygodniu z katalogu <i>trunk</i> tworzony jest nowy katalog <i>release.xyz</i> i trafia na serwer testowy,</li>
+                    <li>po dwóch dniach z maszyny testowej kod trafia na produkcje.</li>
+                </ul>
+         </article>
+
+         <article>
+                <h3>Podział środowisk: Slim framework</h3>
+                        <pre style="margin-top: 0;" class="prettyprint">
+$_ENV['SLIM_MODE'] = 'production';
+</pre>
+                        <pre style="margin-top: 0;" class="prettyprint">
+$app = new Slim(array(
+    'mode' => 'production'
+));
+$app->configureMode('production', function () use ($app) {
+    $app->config(array(
+        'log.enable' => true,
+        'log.path' => '../logs',
+        'debug' => false
+    ));
+});
+$app->configureMode('development', function () use ($app) {
+    $app->config(array(
+        'log.enable' => false,
+        'debug' => true
+    ));
+});
+</pre>
+         </article>
+
+         <article>
+                <h3>Podział środowisk: Symfony, Zend frameworks</h3>
+                <ul class="build">          
+                    <li>Symfony: <code>app/config/config_dev.yml</code>, <code>app/config/config_prod.yml</code></li>
+                    <li>Zend: <code>application/configs/application.ini</code></li>
+                    <li><pre style="margin: 0;" class="prettyprint">
+[production]
+phpSettings.display_startup_errors = 0
+phpSettings.display_errors = 0
+includePaths.library = APPLICATION_PATH "/../library"
+bootstrap.path = APPLICATION_PATH "/Bootstrap.php"
+bootstrap.class = "Bootstrap"
+appnamespace = "Application"
+resources.frontController.controllerDirectory = APPLICATION_PATH "/controllers"
+resources.frontController.params.displayExceptions = 0
+ 
+[development : production]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1</pre></li>
+                </ul>
+         </article>
+
+         <article>
+                <h3>Testy jednostkowe</h3>
+                <blockquote>
+                        <q style="font-size: 38px; margin: 0; line-height: 1.5;">Even good programmers make mistakes. The difference between a good programmer and a bad programmer is that the good programmer uses tests to detect his mistakes as soon as possible.</q>
+                        <cite style="text-align: right; display: block;">phpunit.de</cite>
+                </blockquote>
+                <ul class="build">
+                    <li><pre style="margin: 0;" class="prettyprint">array array_slice ( array $array, 
+    int $offset 
+    [, int $length = NULL 
+    [, bool $preserve_keys = false ]] 
+)</pre></li>
+                </ul>
+                <div class="source">
+                    <a href="http://www.phpunit.de/manual/current/en/automating-tests.html">http://www.phpunit.de/manual/current/en/automating-tests.html</a>
+                </div>
+         </article>
+
+         <article>
+                <h3>Code review</h3>
+                <img src="./assets/img/wtf_per_minute.jpg" alt="wtf per minute" style="margin-left: 140px;" />
+                <div class="source">
+                        <a href="http://stackoverflow.com/questions/184310/do-you-ever-feel-confident-in-your-skills">http://stackoverflow.com/questions/184310/do-you-ever-feel-confident-in-your-skills</a>
+                </div>
+         </article>
+
+         <article class="fill" style="color: #fff; text-align: right;">
+             <img src="./assets/img/nuclear2fingers.jpg" alt="nuclear win" />
+	         <h3>
+		         Dziękuję za uwagę! (przydatne linki)
+	         </h3>
+             <p style="font-size: 20px;">
+		         Debugging Production Systems by Bryan Cantrill:<br />
+		         <a href="http://www.infoq.com/presentations/Debugging-Production-Systems">
+		            http://www.infoq.com/presentations/Debugging-Production-Systems
+		         </a>
+	         </p>
+	         <p style="font-size: 20px;">
+		         Podręcznik PHP:<br />
+		         <a href="http://www.php.net/manual/pl/">
+		            http://www.php.net/manual/pl/
+		         </a>
+	         </p>
+             <p style="font-size: 20px;">
+		         Podręcznik PHPUnit:<br />
+		         <a href="http://www.phpunit.de/manual/current/en/index.html">
+		            http://www.phpunit.de/manual/current/en/index.html
+		         </a>
+	         </p>
+	         <p style="font-size: 20px;">
+		         Prezentacja:<br>
+		         <a href="http://slides.wikia.net/akai/20120508/phpFatalError/">
+   		         http://slides.wikia.net/akai/20120508/phpFatalError/
+		         </a>
+	         </p>
+             <p>
+                 <img src="./assets/img/qr_akai_slides.png" style="position:absolute; top: 62%; height:25%; min-height: 250px; min-width: 250px; z-index: 20; border: solid 10px #fff">
+             </p>
+         </article>
+
+         <article class="fill">
+             <h3>The End</h3>
+             <img src="./assets/img/buuuum.jpg" alt="buuuum" />
+         </article>
+
+         <div class="slide-area" id="prev-slide-area"></div>
+         <div class="slide-area" id="next-slide-area"></div>
+      </section>
+   </body>
+</html>

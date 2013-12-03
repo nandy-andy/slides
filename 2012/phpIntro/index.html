@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta charset="utf-8">
+      <title>PHP</title>
+      <script src="./assets/js/slides.js"></script>
+      <style>
+         /* Your individual styles here, or just use inline styles if that’s what you want. */
+         .slides.template-default > article.biglogo {
+            background-image: url("./assets/img/php-logo.png") !important;
+         }
+         .slides.template-default > article:not(.nobackground):not(.biglogo) {
+            background-position-x: 95% !important;
+            background-image: url("./assets/img/wikia-logo.png") !important;
+         }
+         .slides.template-default > article > h3 {
+            color: #0069AC !important;
+         }
+         .slides.template-default strong {
+            color: #0069AC !important;
+         }
+         .slides.template-default h3 strong {
+            color: #fff !important;
+         }
+         .slides.template-default th {
+            background-color: #f1f1f1 !important;
+         }
+         .slides.template-default ul {
+            list-style-type: disc; !important;
+         }
+         .slides.template-default li:before {
+            content: ''; !important;
+         }
+         .slides.template-default .build.code {
+             margin-left: 0;
+          }
+         .slides.template-default .col1,
+         .slides.template-default .col2 {
+             display: block;
+             width: 300px;
+             float: left;
+         }
+         .slides.template-default ul#spaghetti {
+             list-style-type: none;
+         }
+         .slides.template-default ul#spaghetti li img.kid,
+         .slides.template-default ul#spaghetti li img.unittestsss {
+             list-style-type: none;
+             position: absolute;
+             top: 150px; 
+             left: 300px;
+             box-shadow: 0px 0px 80px #000;
+         }
+         .slides.template-default ul#spaghetti li img.unittestsss {
+             top: 225px; 
+             left: 225px;
+         }
+         #silex-logo {
+            color: #000;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 50px;
+            margin-left: 25px;
+         }
+         #flight-logo {
+            color: black;
+            font-family: "Mr Dafoe", Times, serif;
+            font-size: 50px;
+            font-style: italic;
+            margin-left: 25px;
+         }
+         .slides.template-default q.custom-long {
+              margin: 0;
+              line-height: 36px;
+              font-size: 30px;
+         }
+         .slides.template-default q.custom-long:after {
+              margin-left: 285px;
+              margin-top: -40px;
+         }
+      </style>
+      <meta name="viewport" content="width=1100,height=750"><meta name="apple-mobile-web-app-capable" content="yes">
+   </head>
+   <body style="display: none" class="loaded">
+      <section class="slides layout-regular template-default">
+      <!-- Your slides (<article>s) go here. Delete or comment out the slides below. -->
+         <article class="biglogo current">
+         </article>
+
+         <article class="next">
+	         <h1>
+		         Wprowadzenie do PHP
+	         </h1>
+	         <p>
+		         Andrzej <strong>'nAndy'</strong> Łukaszewski, Wikia Inc.
+		         <br>
+		         AKAI, 27 marca, 2012
+	         </p>
+         </article>
+
+         <article class="fill far-next">
+	         <h3>
+		         Kim jestem?
+	         </h3>
+	         <ul>
+		         <li>Junior Application Developer <strong class="nandy">@Wikia</strong></li>
+               <li>nandy@wikia-inc.com</li>
+               <li>@nandy_andy</li>
+               <li>http://blog.lukaszewski.it</li>
+	         </ul>
+         </article>
+
+         <article>
+	         <h3>
+		         Plan prezentacji
+	         </h3>
+	         <ol class="build">
+               <li class="to-build">Czym jest PHP?</li>
+               <li class="to-build">Zarys historyczny</li>
+               <li class="to-build">Podstawy</li>
+               <li class="to-build">Łatwo, szybko... dobrze?</li>
+               <li class="to-build">Podsumowanie</li>
+            </ol>
+         </article>
+
+         <article>
+	         <h3>
+		         Czym jest PHP?
+	         </h3>
+	         <ul class="build">
+               <li class="to-build">PHP: Hypertext Preprocessor</li>
+               <li class="to-build">język skryptowy oparty na składni C, Java, Perl</li>
+               <li class="to-build">open source</li>
+               <li class="to-build">ogromnie popularny</li>
+               <li class="to-build">głównie wykorzystywany "w rozwoju sieci"</li>
+            </ul>
+            
+            <div class="source">
+			      <a href="http://www.php.net/manual/en/preface.php">http://www.php.net/manual/en/preface.php</a>
+		      </div>
+         </article>
+
+         <article>
+	         <h1>
+		         Zarys historyczny
+	         </h1>
+         </article>
+
+         <article class="fill">
+            <h3>
+               1994
+            </h3>
+            <br />
+            <br />
+            <section>
+               <img src="./assets/img/rasmus_lerdorf_elePHPant.jpg" />
+            </section>
+            <div class="source">
+			      <a href="http://www.lafermeduweb.net/images/billets/2010-11/rasmus_lerdorf_forumphp.jpg">http://www.lafermeduweb.net/images/billets/2010-11/rasmus_lerdorf_forumphp.jpg</a>
+		      </div>
+         </article>
+         
+         <article>
+            <h3>
+               PHP/FI
+            </h3>
+            <section>
+               <pre class="prettyprint">
+&lt;!--include /text/header.html--&gt;
+
+&lt;!--getenv HTTP_USER_AGENT--&gt;
+&lt;!--ifsubstr $exec_result Mozilla--&gt;
+  Hey, you are using Netscape!
+&lt;!--endif--&gt;
+                  
+&lt;!--sql database select * from table where user='$username'--&gt;
+&lt;!--ifless $numentries 1--&gt;
+  Sorry, that record does not exist
+&lt;!--endif exit--&gt;
+  Welcome &lt;!--$user--&gt;!
+  You have &lt;!--$index:0--&gt; credits left in your account.
+
+&lt;!--include /text/footer.html--&gt;</pre>
+               <!--
+		         <pre class="prettyprint">
+                  <span class="tag">&lt;script</span><span class="pln"></span>
+                  <span class="atn">type</span><span class="pun">=</span><span class="atv">"text/javascript"</span><span class="pln"></span>
+<span class="atn">src</span><span class="pun">=</span><span class="atv">"skrypt.js"</span><span class="tag">&gt;&lt;/script&gt;</span><span class="pln"></span>
+               </pre>
+               -->
+	         </section>
+            <div class="source">
+			      <a href="http://www.php.net/manual/en/history.php.php">http://www.php.net/manual/en/history.php.php</a>
+		      </div>
+         </article>
+
+         <article class="fill">
+            <h3>
+               1997 - <strong>Ze</strong>ev Suraski & A<strong>nd</strong>i Gutmans
+            </h3>
+            <br>
+            <section>
+               <img src="./assets/img/gutmans_suraski.jpg" />
+            </section>
+            <div class="source">
+			      <a href="http://gal.sig9.net/main.php?g2_view=core.DownloadItem&g2_itemId=607&g2_serialNumber=2">http://gal.sig9.net/main.php?g2_view=core.DownloadItem&g2_itemId=607&g2_serialNumber=2</a>
+		      </div>
+         </article>
+         
+         <article>
+            <h3>
+               PHP3
+            </h3>
+               <pre class="prettyprint">
+class Title {
+//...
+    /**
+     * @name Private member variables
+     * Please use the accessor functions instead.
+     * @private
+     */
+    //@{
+    var $mTextform = '';       ///< Text form (spaces not underscores) of the main part
+    var $mUrlform = '';        ///< URL-encoded form of the main part
+    var $mDbkeyform = '';      ///< Main part with underscores
+//...
+    var $mNamespace = NS_MAIN;
+    var $mLength = -1;          ///< The page length, 0 for special pages
+    var $mRedirect = null;      ///< Is the article at this title a redirect?
+    var $mBacklinkCache = null; ///< Cache of links to this title
+    //@}</pre>
+            <div class="source">
+			      <a href="http://www.phpclasses.org/browse/file/541.html">http://www.phpclasses.org/browse/file/541.html</a>
+		      </div>
+         </article>
+
+	 <article>
+            <h3>
+               PHP4
+            </h3>
+               <pre class="prettyprint">class WallController extends ArticleCommentsModule {
+    private $helper;
+    protected $allowedNamespaces = array();
+    protected $sortingType = 'index';
+    const WALL_MESSAGE_RELATIVE_TIMESTAMP = 604800; // relative message timestampt for 7 days (improvement 20178)
+
+    public function __construct() {
+        $this->app = F::App();
+        $this->allowedNamespaces = $this->app->getLocalRegistry()->get('UserProfileNamespaces');
+    }
+    
+    public function init() {
+        $this->helper = F::build('WallHelper', array());
+    }
+//...</pre>
+            <div class="source">
+			      <a href="http://www.phpclasses.org/browse/file/541.html">http://www.phpclasses.org/browse/file/541.html</a>
+		      </div>
+         </article>
+
+         <article>
+            <h3>
+               PHP5
+            </h3>
+               <ul class="build">
+                   <li>możliwość używania HTTP jako protokół stanowy (ciasteczka, sesje),</li>
+                   <li>możliwość nawiązania połączenia z bazami danych (mysql_*, PDO),</li>
+                   <li>możliwość manipulacji na dokumnetach XML,</li>
+                   <li>możliwość przesyłania plików na serwer,</li>
+                   <li>możliwość przetwarzania obrazków (GD2, ImageMagick, GMagick),</li>
+                   <li>możliwość przetwarzania plików dźwiękowych.</li>
+               </ul>
+            <div class="source">
+			      <a href="http://www.php.net/manual/en/funcref.php">http://www.php.net/manual/en/funcref.php</a>
+		      </div>
+         </article>
+
+         <article class="fill">
+            <h3>
+               PHP16
+            </h3>
+               <img src="./assets/img/php16.jpg" />
+                <!--
+               <div class="source">
+			      <a href="http://seodemotivators.com/wp-content/uploads/2011/09/tmpUpH3dE.jpg">http://seodemotivators.com/wp-content/uploads/2011/09/tmpUpH3dE.jpg</a>
+		       </div>
+                -->
+         </article>
+
+         <article>
+	         <h1>
+               Podstawy
+	         </h1>
+         </article>
+
+         <article>
+	         <h3>
+               Podstawowa składnia cz.1
+	         </h3>
+            <pre class="prettyprint">&lt;?php ... ?&gt;</pre>
+            <pre class="prettyprint">&lt;script language="php"&gt; ... &lt;/script&gt;</pre>
+            <pre class="prettyprint">&lt;? ... ?&gt;</pre>
+            <pre class="prettyprint">&lt;% ... %&gt;</pre>
+            <pre class="prettyprint">&lt;p&gt;This is going to be ignored.&lt;/p&gt;
+&lt;?= 'While this is going to be parsed.'; ?&gt;
+&lt;p&gt;This will also be ignored.&lt;/p&gt;</pre>
+            <div class="source">
+                <a href="http://www.php.net/manual/en/language.basic-syntax.phpmode.php">http://www.php.net/manual/en/language.basic-syntax.phpmode.php</a>
+	        </div>
+         </article>
+
+         <article>
+	         <h3>
+               Podstawowa składnia cz.2
+	         </h3>
+            <pre class="prettyprint">&lt;?php
+if ($expression) {
+    ?&gt;
+    &lt;strong&gt;This is true.&lt;/strong&gt;
+    &lt;?php
+} else {
+    ?&gt;
+    &lt;strong&gt;This is false.&lt;/strong&gt;
+    &lt;?php
+}
+?&gt;</pre>
+            <pre class="prettyprint">&lt;?php if( $expression ): ?&gt;
+    &lt;strong&gt;This is true.&lt;/strong&gt;
+&lt;?php else: ?&gt;
+    &lt;strong&gt;This is false.&lt;/strong&gt;
+&lt;?php endif; ?&gt;</pre>
+            
+            <div class="source">
+			      <a href="http://www.php.net/manual/en/language.basic-syntax.phpmode.php">http://www.php.net/manual/en/language.basic-syntax.phpmode.php</a>
+		      </div>
+         </article>
+
+         <article>
+	         <h3>
+                        Zmienne cz.1
+	         </h3>
+            <ul class="build">
+                <li class="to-build">$variable, $_var, $v4ri5bl3,</li>
+                <li class="to-build">$variable != $VARIABLE</li>
+                <li class="to-build">predefiniowane zmienne i zmienne superglobalne:
+                        <ul class="build col1">
+                                <li class="to-build">$GLOBALS,</li>
+                                <li class="to-build">$_SERVER,</li>
+                                <li class="to-build">$_GET,</li>
+                                <li class="to-build">$_POST,</li>
+                                <li class="to-build">$_FILES,</li>
+                        </ul>
+                        <ul class="build col2">
+                                <li class="to-build">$_COOKIE,</li>
+                                <li class="to-build">$_SESSION,</li>
+                                <li class="to-build">$_REQUEST,</li>
+                                <li class="to-build">$_ENV.</li>
+                        </ul>
+                </li>
+            </ul>
+            <div class="source">
+                <a href="http://www.php.net/manual/en/language.variables.php">http://www.php.net/manual/en/language.variables.php</a>
+            </div>
+         </article>
+
+         <article>
+	         <h3>
+                        Zmienne cz.2
+	         </h3>
+                 <pre class="prettyprint">$a = 'welcome';
+$$a = 'AKAI'; //echo $welcome; --> AKAI
+echo &quot;$a ${$a}&quot;</pre>
+                 <pre class="prettyprint">class Student {
+    public $sex = 'male';
+    public $name = 'Steve';
+    public $surname = 'Kowalsky';
+    public $class = 'geography';
+}
+$s = new Student();
+$property = 'name';
+$propertiesArr = array('sex', 'name', 'surname', 'class');
+echo $s-&gt;$property . ' ';
+echo $s-&gt;$propertiesArr[2];</pre>
+                 <div class="source">
+                        <a href="http://www.php.net/manual/en/language.variables.variable.php">http://www.php.net/manual/en/language.variables.variable.php</a>
+                 </div>
+         </article>
+
+         <article>
+	         <h3>
+                        Typy danych cz.1
+	         </h3>
+            <ol class="build">
+                <li class="to-build">
+                        Cztery typy proste:
+                        <ul class="build" style="margin-top: 10px">
+                                <li class="to-build">boolean</li>
+                                <li class="to-build">integer</li>
+                                <li class="to-build">float</li>
+                                <li class="to-build">string</li>
+                       </ul>
+                </li>
+                <li class="to-build">
+                        Dwa typy złożone:
+                        <ul class="build" style="margin-top: 10px">
+                               <li class="to-build">array</li>
+                               <li class="to-build">object</li>
+                        </ul>                        
+                </li>
+                <li>
+                        Dwa typy specjalne:
+                        <ul class="build" style="margin-top: 10px">
+                                <li class="to-build">resource</li>
+                                <li class="to-build">NULL</li>
+                        </ul>
+                </li>
+            </ol>
+            <div class="source">
+                <a href="http://www.php.net/manual/en/language.types.intro.php">http://www.php.net/manual/en/language.types.intro.php</a>
+            </div>
+         </article>
+
+         <article>
+	         <h3>
+               Typy danych cz.2
+	         </h3>
+<pre class="prettyprint">
+&lt;?php                      &lt;?php // od PHP 5.4
+$array = array(               $array = [
+    "foo" =&gt; "bar",            "foo" =&gt; "bar",
+    "bar" =&gt; "foo",            "bar" =&gt; "foo"  
+);                            ];
+?&gt;                         ?&gt;</pre>
+<pre class="prettyprint">
+$array = array(
+    1    => "a",
+    "1"  => "b",
+    1.5  => "c",
+    true => "d",
+);
+</pre>
+<ul class="build code">
+                <li><pre class="prettyprint">
+/*array(1) {
+  [1]=> string(1) "d"
+}*/
+</pre></li>
+</ul>
+            <div class="source">
+			      <a href="http://www.php.net/manual/en/language.types.array.php">http://www.php.net/manual/en/language.types.array.php</a>
+		      </div>
+         </article>
+
+         <article>
+	         <h3>
+               Typy danych cz.3
+	         </h3>
+             <ul class="build">
+                <li><pre class="prettyprint">
+$object = (object) 'AKAI';
+</pre></li>
+            <li><pre class="prettyprint">
+echo $object->scalar; //output: AKAI
+</pre></li>
+            <li><pre class="prettyprint">
+$arr = (object) array('AKAI', 1, 'WIKIA');
+/*
+object(stdClass)#1 (3) {
+  [0]=>
+  string(4) "AKAI"
+  [1]=>
+  int(1)
+  [2]=>
+  string(5) "WIKIA"
+}
+*/
+</pre></li>
+            </ul>
+            <div class="source">
+			      <a href="http://www.php.net/manual/en/language.types.object.php">http://www.php.net/manual/en/language.types.object.php</a>
+		      </div>
+         </article>
+
+         <article>
+	         <h1>
+		         Łatwo, szybko... dobrze?
+	         </h1>
+         </article>
+
+         <article class="fill">
+	         <h3>
+		         Łatwo i szybko można...
+	         </h3>
+             <img src="./assets/img/study-php.jpg" width="507" height="433" />
+         </article>
+
+         <article>
+	         <h3>
+		         Łatwo i szybko można...
+	         </h3>
+             <ul id="spaghetti" class="build" style="margin: 50px 0 0 150px;">
+                <li style="margin: 50px 0;" class="build-in"><img src="./assets/img/krasnal.gif" width="400" height="80" /></li>
+                <li style="margin: 50px 0;" class="build-in"><img src="./assets/img/wamp.png" width="351" height="85" /></li>
+                <li style="margin: 50px 0;" class="build-in"><img src="./assets/img/xampp.jpg" width="200" height="59" /></li>
+                <li style="margin: 50px 0;" class="build-in"><strong>L</strong>inux + <strong>A</strong>pache + <strong>M</strong>ySQL + <strong>P</strong>HP</li>
+             </ul>
+         </article>
+         
+         <article>
+	         <h3>
+		         ...ale może się to skończyć źle
+	         </h3>
+                 <pre class="prettyprint">&lt;?php
+$i = 0;
+$data = array(
+    array('Skipper', 'Tom McGrath', 'leader'), 
+    array('Kowalski', 'Jeff Bennett', 'strategist'), 
+    array('Private', 'James Patrick Stuart', 'newbie'), 
+    array('Rico', 'John DiMaggio', ' weapons specialist')
+);
+echo '&lt;table collspan=&quot;1&quot; border=&quot;1&quot; cellpadding="1"&gt;';
+echo '&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;Voice&lt;/td&gt;&lt;td&gt;Role&lt;/td&gt;&lt;/tr&gt;';
+foreach($data as $penguin) {
+    echo &quot;&lt;tr&gt;&lt;td&gt;$panguin[0]&lt;/td&gt;&lt;td&gt;$panguin[1]&lt;/td&gt;
+    &lt;td&gt;$panguin[2]&lt;/td&gt;&lt;/tr&gt;&&quot;;
+}
+$i++;
+echo '&lt;/table&gt;';
+?&gt;
+</pre>
+<ul id="spaghetti" class="build">
+    <li><img src="./assets/img/spaghetti.jpg" width="297" height="400" class="kid" /></li>
+</ul>
+         </article>
+
+         <article>
+	         <h3>
+		         Łatwo i szybko można...
+	         </h3>
+             <ul id="spaghetti" class="build">
+                <li style="margin: 25px 0;" class="build-in"><a href="http://www.php.net/manual/en/" target="_top"><img src="./assets/img/php-logo.png" width="210" height="111" /><br />http://www.php.net/manual/en/</a></li>
+                <li style="margin: 25px 0;" class="build-in"><a href="http://www.php.pl"><img src="./assets/img/phppl.png" width="244" height="72" /><br />http://www.php.pl</a></li>
+                <li style="margin: 25px 0;" class="build-in"><a href="http://www.meetphp.pl" target="_top"><img src="./assets/img/meetphp.png" width="211" height="41" /><br />http://www.meetphp.pl</a></li>
+             </ul>
+         </article>
+
+         <article>
+	         <h3>
+		         Czy można też zrobić coś dobrze w PHP?
+	         </h3>
+            <ul class="build">
+               <li>microframeworki: <img src="./assets/img/slim-logo.png" width="98" height="50" /> <span id="silex-logo">SILEX</span> <span id="flight-logo">Flight</span> </li>
+               <li>frameworki: <img src="./assets/img/zf-logo.png" width="94" height="50" style="margin-left: 70px;" /> <img src="./assets/img/sf-logo.png" width="145" height="50" style="margin-left: 25px;" /></li>
+               <li><img src="./assets/img/doctrine-logo.jpg" width="197" height="54" /> <img src="./assets/img/propel-logo.png" width="187" height="50" /> <img src="./assets/img/redbeanphp-logo.png" width="207" height="38" /></li>
+               <li><img src="./assets/img/xdebug-logo.png" width="94" height="50" /></li>
+               <li>PHPUnit</li>
+               <li>PHPLint</li>
+            </ul>
+         </article>
+         
+         <article class="fill">
+            <h3>
+		        Xdebug
+            </h3>
+            <img src="./assets/img/xdebug.png" />
+         </article>
+
+         <article>
+            <h3>
+		        Testy jednostkowe
+            </h3>
+            <pre class="prettyprint" style="overflow: scroll; width: 760px; height: 490px;">class UserIdentityBoxTest extends WikiaBaseTest {
+    public function testCheckIfDisplayZeroStates($data, $expectedResult) {
+        $userIdentityBox = new UserIdentityBox(F::app(), $this->getMock('User'), self::TOP_WIKI_LIMIT);
+        $this->assertEquals($expectedResult, $userIdentityBox->checkIfDisplayZeroStates($data));
+    }    
+    public function checkIfDisplayZeroStatesDataProvider() {
+        return array(
+            //data is an empty array
+	    	array(
+		        array(),
+		        true
+	    	),
+            //all "important" data set
+            array(
+                array(
+                    'location' => 'Poznań', 
+                    'occupation' => 'Programmer', 
+                    'birthday' => '1985-07-10', 
+                    'gender' => 'Male', 
+                    'website' => 'http://www.example.com', 
+                    'twitter' => 'http://www.twitter.com/#/test', 
+                    'topWikis' => array(1, 2, 3, 123, 4365),
+                ),
+                false,
+            ),
+        );
+    }
+//...
+}
+<ul id="spaghetti" class="build">
+    <li><img src="./assets/img/unit_tests.png" width="448" height="225" class="unittestsss" /></li>
+</ul>
+</pre>
+         </article>
+
+         <article>
+	         <h1>
+		         Czy warto się zainteresować PHP?
+	         </h1>
+         </article>
+
+        <article>
+            <img class="centered" src="./assets/img/dollar.jpg" width="400" height="400" style="margin-top: 60px;" />
+            <div class="source">
+			    <a href="http://us.123rf.com/400wm/400/400/alhovik/alhovik1107/alhovik110700112/9882461-bling-bling-dollar-symbol-in-diamonds.jpg">http://us.123rf.com/400wm/400/400/alhovik/alhovik1107/alhovik110700112/9882461-bling-bling-dollar-symbol-in-diamonds.jpg</a>
+		    </div>
+        </article>
+
+        <article>
+            <div style="margin: 120px 0 0 120px; width: 600px;">
+                <ul style="list-style-type: none; margin: 0;" class="col1">
+                   <li style="margin: 25px 0;"><img src="./assets/img/wikipedia-logo.png" width="50" height="50" /><span style="display: inline-block; position: relative; top: -15px; left: 20px;">Wikipedia</span></li>
+                   <li style="margin: 25px 0;"><img src="./assets/img/wikia-logo.png" width="150" height="38" /></li>
+                   <li style="margin: 25px 0;"><img src="./assets/img/allegro-logo.png" width="190" height="50" /></li>
+                   <li style="margin: 25px 0;"><img src="./assets/img/nk-logo.png" width="50" height="50" /><span style="display: inline-block; position: relative; top: -15px; left: 20px;">NK</span></li>
+                </ul>
+                <ul style="list-style-type: none; margin: 0;" class="col2">
+                   <li style="margin: 25px 0;"><img src="./assets/img/drupal-logo.png" width="243" height="50" /></li>
+                   <li style="margin: 25px 0;"><img src="./assets/img/myspace.jpg" width="111" height="50" /></li>
+                   <li style="margin: 25px 0;"><img src="./assets/img/wordpress-logo.png" width="220" height="50" /></li>
+                   <li style="margin: 25px 0;"><img src="./assets/img/facebook-logo.png" width="145" height="48" /></li>
+                </ul>
+            </div>
+         </article>
+         
+         <article>
+            <blockquote>
+                <q class="custom-long">
+                    If you’re unaware of the usual beef most developers have with PHP, it tends to revolve around:
+                    <ul>
+                        <li>ugly syntax,</li>
+                        <li>lack of some necessary features that other languages have (prior to 5.3, namespacing, closures),</li>
+                        <li>inconsistent function naming, usage, and other quirks,</li>
+                        <li>mix of procedural and OO-ness,</li>
+                        <li>the fact that 80-90% of PHP projects are probably gigantic piles of shit.</li>
+                    </ul>
+                </q>
+                <cite>
+                    Kenny Katzgrau (Yahoo, CodeIgniter)
+                </cite>
+            </blockquote>
+            <div class="source">
+			    <a href="http://codefury.net/2011/04/why-php-was-a-ghetto/">http://codefury.net/2011/04/why-php-was-a-ghetto/</a>
+		    </div>
+         </article>
+
+        <article>
+            <blockquote>
+                <q style="margin-right: 0;">If you are capable of making wise software design decisions, PHP is a great choice to build your web application with.</q>
+                <cite>Kenny Katzgrau (Yahoo, CodeIgniter)</cite>
+            </blockquote>
+            <div class="source">
+			    <a href="http://codefury.net/2011/04/why-php-was-a-ghetto/">http://codefury.net/2011/04/why-php-was-a-ghetto/</a>
+		    </div>
+         </article>
+
+         <!--
+         <article>
+            <img class="centered" src="./assets/img/php-connector.gif" width="330" height="250" />
+         </article>
+         -->
+
+         <article>
+	         <h3>
+		         Dziękuję za uwagę! (przydatne linki)
+	         </h3>
+	         <p style="font-size: 20px;">
+		         Podręcznik PHP:<br>
+		         <a href="http://www.php.net/manual/pl/">
+		            http://www.php.net/manual/pl/
+		         </a>
+	         </p>
+	         <p style="font-size: 20px;">
+		         meet.php:<br>
+		         <a href="http://www.meetphp.pl">
+		            http://www.meetphp.pl
+		         </a>
+	         </p>
+	         <p style="font-size: 20px;">
+		         Repozytorium MediaWiki:<br>
+		         <a href="http://svn.wikimedia.org/doc/files.html">
+		            http://svn.wikimedia.org/doc/files.html
+		         </a>
+	         </p>
+            <p style="font-size: 20px;">
+		         Repozytorium Wikia:<br>
+		         <a href="http://trac.wikia-code.com/browser/wikia/trunk">
+		            http://trac.wikia-code.com/browser/wikia/trunk
+		         </a>
+	         </p>
+	         <p style="font-size: 20px;">
+		         Prezentacja:<br>
+		         <a href="http://slides.wikia.net/akai/20120327/phpIntro/">
+   		         http://slides.wikia.net/akai/20120320/phpIntro/
+		         </a>
+	         </p>
+             <p>
+                 <img src="./assets/img/qr_akai_slides.png" style="position:absolute;left:70%; top: 62%; height:25%; min-height: 250px; min-width: 250px; z-index: 20; border: solid 10px #fff">
+             </p>
+         </article>
+
+         <div class="slide-area" id="prev-slide-area"></div>
+         <div class="slide-area" id="next-slide-area"></div>
+      </section>
+   </body>
+</html>
