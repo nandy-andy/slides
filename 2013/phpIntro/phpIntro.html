@@ -1,0 +1,594 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/wikia_color_logo.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/wikia_bar_logo.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Plan prezentacji</h2>
+    </hgroup>
+    <article>
+      <ol class="build">
+        <li>Czym jest PHP?</li>
+        <li>Zarys historyczny</li>
+        <li>Podstawy</li>
+        <li>Zalety i wady</li>
+        <li>Podsumowanie</li>
+      </ol>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Czym jest PHP?</h2>
+    </hgroup>
+    <article>
+       <ul class="build fade">
+         <li>PHP: Hypertext Preprocessor</li>
+         <li>język skryptowy oparty na składni C, Java, Perl</li>
+         <li>open source</li>
+         <li>ogromnie popularny</li>
+         <li>głównie wykorzystywany "w rozwoju sieci"</li>
+       </ul>
+       <ul class="build fade">
+         <li>"PHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from your blog to the largest social networking site in the world."</li>
+       </ul>
+       <footer class="source white">http://www.php.net/manual/en/preface.php</footer>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>styczeń 2013: <a href="http://php.net/usage.php">PHP: 244M sites, 2.1M IP addresses</a></li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <hgroup>
+      <h1>Zarys historyczny</h1><br/><br/><br /><br /><br />
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/rasmus_lerdorf_elePHPant.jpg)">
+    <hgroup>
+      <h2 class="white">1994</h2>
+    </hgroup>
+    <article>
+      <footer class="source white">http://www.lafermeduweb.net/images/billets/2010-11/rasmus_lerdorf_forumphp.jpg</footer>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Rasmus Lerdorf - w 1994 stowrzył "Personal Home Page Tools" (PHP Tools), aby śledzić ruch na swojej stronie z CV</li>
+          <li>Personal Home Page Tools, Forms Iterpreter, Personal Home Page Construction Kit, PHP/FI</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/gutmans_suraski.jpg)">
+    <hgroup>
+      <h2 class="white">1997 - <strong>Ze</strong>ev Suraski & A<strong>nd</strong>i Gutmans</h2>
+    </hgroup>
+    <article>
+      <footer class="source white">http://gal.sig9.net/main.php?g2_view=core.DownloadItem&g2_itemId=607&g2_serialNumber=2</footer>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>w 1997 PHP/FI 2.0 było nadal słabo wydajne i mimo wielu dodatkowych funkcjonalności brakowało mu tych, które mogłyby pomóc w tworzeniu eCommerce</li>
+          <li>wraz z Rasmusem stworzyli PHP Development Team</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>PHP</h2>
+    </hgroup>
+    <article class="smaller">
+       <pre class="prettyprint" data-lang="php/fi">
+&lt;!--getenv HTTP_USER_AGENT--&gt;
+&lt;!--ifsubstr $exec_result Mozilla--&gt;
+  Hey, you are using Netscape!
+&lt;!--endif--&gt;</pre>
+<pre class="prettyprint" data-lang="php 3">
+class Title {
+    var $mTextform = '';
+    var $mDbkeyform = '';
+    function getTitleFromId( $id ) {
+    // ...
+    }
+}</pre>
+<pre class="prettyprint" data-lang="php 5">
+class WallController extends ArticleCommentsModule {
+    private $helper;
+    protected $sortingType = 'index';
+    const WALL_MESSAGE_RELATIVE_TIMESTAMP = 604800;
+    public function __construct() {
+        // ...
+    }
+    public function init() {
+	// ...
+    }
+}</pre>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>w maju 2000 roku PHP 4 oparty na nowym silniku Zend Engine i z masą dodatkowych funkcjonalności (wsparcie dla wielu serwerów, buferowanie wyjścia, sesje HTTP, bardziej bezpieczną obsługą danych wprowadzanych przez użytkownika i kilkunastoma nowymi kunstrukcjami w samej składni) zostaje opublikowany</li>
+          <li>w 2004 roku pojawia sie PHP 5.0 (długi development i kilka nietrafionych dat premiery)</li>
+          <li>5.0: skupiony głównie na zmianie jaką było użycie nowego silnika Zend Engine 2.0 (performance)</li>
+          <li>5.0: zmieniony "object model" (klasy abstrakcyjne, interfejsy, metody magiczne, final, referencje zamiast wartości)</li>
+          <li>5.1: ponownie poprawa wydajności, poprawa obsługi dat, PDO włączone domyślnie, ponad 400 bugfixów</li>
+          <li>5.2: bugfixy</li>
+          <li>5.3: interesujące ficzery: namespaces, lambda functions, late static bindings</li>
+          <li>5.4: interesujące ficzery: [], rozserzenie sesji może śledzić postęp uploadu, wbudowany webserver w CLI, traits, (new Foo)->bar()</li>
+          <li>5.5: interesujące ficzery: generatory = yeild, finally in try-catch, imageflip(), imagecrop(), ::class, OPcache</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="black nobackground">
+    <article class="flexbox vcenter">
+       <img src="images/php16.jpg" alt="PHP 16" title="PHP 16" />
+       <footer class="source">http://seodemotivators.com/wp-content/uploads/2011/09/tmpUpH3dE.jpg</footer>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <hgroup>
+      <h1>Podstawy</h1><br/><br/><br /><br /><br />
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Podstawowa składnia</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="php">&lt;?php ... ?&gt;</pre>
+      <pre class="prettyprint" data-lang="php">&lt;script language="php"&gt; ... &lt;/script&gt;</pre>
+      <pre class="prettyprint" data-lang="php">&lt;? ... ?&gt;</pre>
+      <pre class="prettyprint" data-lang="php">&lt;% ... %&gt;</pre>
+      <pre class="prettyprint" data-lang="php">&lt;p&gt;This is going to be ignored.&lt;/p&gt;
+&lt;?= 'While this is going to be parsed.'; ?&gt;
+&lt;p&gt;This will also be ignored.&lt;/p&gt;</pre>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>tagi otwierające,</li>
+          <li>osadzanie wewnątrz HTML</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Podstawowa składnia</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="php">&lt;?php
+if ($expression) {
+    ?&gt;
+    &lt;strong&gt;This is true.&lt;/strong&gt;
+    &lt;?php
+} else {
+    ?&gt;
+    &lt;strong&gt;This is false.&lt;/strong&gt;
+    &lt;?php
+}
+?&gt;</pre>
+            <pre class="prettyprint" data-lang="php">&lt;?php if( $expression ): ?&gt;
+    &lt;strong&gt;This is true.&lt;/strong&gt;
+&lt;?php else: ?&gt;
+    &lt;strong&gt;This is false.&lt;/strong&gt;
+&lt;?php endif; ?&gt;</pre>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>konstrukcje: if, switch,</li>
+	  <li>pętle: do-while, while, for, foreach</li>
+          <li>dwa sposoby zapisu: drugi bardzo wygodny przy szablonach</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Zmienne</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>$variable, $_var, $v4ri5bl3,</li>
+        <li>$variable != $VARIABLE</li>
+        <li>predefiniowane zmienne i zmienne superglobalne:
+	<ul>
+	  <li>$GLOBALS,</li>
+          <li>$_SERVER,</li>
+          <li>$_GET,</li>
+          <li>$_POST,</li>
+          <li>$_FILES,</li>
+          <li>$_COOKIE,</li>
+          <li>$_SESSION,</li>
+          <li>$_REQUEST,</li>
+          <li>$_ENV.</li>
+        </ul>
+      </ul>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>zaczynają się znakiem dolara,</li>
+          <li>nie mogą zaczynać się od cyfry,</li>
+          <li>wielkość znaków ma znaczenie.</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Typy danych</h2>
+    </hgroup>
+    <article>
+       <ol class="build">
+                <li class="to-build">
+                        Cztery typy proste:
+                        <ul class="build" style="margin-top: 10px">
+                                <li class="to-build">boolean</li>
+                                <li class="to-build">integer</li>
+                                <li class="to-build">float</li>
+                                <li class="to-build">string</li>
+                       </ul>
+                </li>
+                <li class="to-build">
+                        Dwa typy złożone:
+                        <ul class="build" style="margin-top: 10px">
+                               <li class="to-build">array</li>
+                               <li class="to-build">object</li>
+                        </ul>                        
+                </li>
+                <li>
+                        Dwa typy specjalne:
+                        <ul class="build" style="margin-top: 10px">
+                                <li class="to-build">resource</li>
+                                <li class="to-build">NULL</li>
+                        </ul>
+                </li>
+            </ol>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <hgroup>
+      <h1>Live coding</h1><br/><br/><br /><br /><br />
+    </hgroup>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>podwójny dwukropek po hebrajsku self::self::a();</li>
+          <li>string_magic.php</li>
+          <li>object.php</li>
+          <li>array_trap.php</li>
+          <li>co się dzieje w PHP, gdy rzutujemy string na objekt?</li>
+          <li>co się dzieje w PHP, gdy rzutujemy tablice na objekt?</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <hgroup>
+      <h1>Zalety i wady</h1><br/><br/><br /><br /><br />
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/study-php.jpg); background-size: 100% 100%;">
+    <hgroup>
+      <h2 class="white">Łatwy. Szybko.</h2>
+    </hgroup>
+    <article>
+      <footer class="source white">http://www.lafermeduweb.net/images/billets/2010-11/rasmus_lerdorf_forumphp.jpg</footer>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>łatwy język: podobna składnia do wielu innych, dynamiczne typowanie zmiennych,</li>
+          <li>szybko można napisać stronkę,</li>
+          <li>łatwo i szybko można znaleźć serwer i postawić na nim tą stronkę,</li>
+          <li>Krasnal, WAMP, XAMP, LAMP.</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/spaghetti.jpg); background-size: 100% 100%;">
+    <hgroup>
+      <h2 class="white">Może się to jednak skończyć źle...</h2>
+    </hgroup>
+    <article>
+      <footer class="source white">http://www.lafermeduweb.net/images/billets/2010-11/rasmus_lerdorf_forumphp.jpg</footer>
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/wikia_bar_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein smaller">
+      <q>
+        If you’re unaware of the usual beef most developers have with PHP, it tends to revolve around:
+        <ul>
+          <li>ugly syntax,</li>
+          <li>lack of some necessary features that other languages have (prior to 5.3, namespacing, closures),</li>
+          <li>inconsistent function naming, usage, and other quirks,</li>
+          <li>mix of procedural and OO-ness,</li>
+          <li>the fact that 80-90% of PHP projects are probably gigantic piles of shit.</li>
+        </ul>
+      </q>
+      <div class="author">
+        Kenny Katzgrau<br />
+        CodeIgniter
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Mikroframeworki</h2>
+    </hgroup>
+    <article>
+      <table class="unformated">
+        <tr>
+          <td><img src="images/slim-logo.png" width="98" height="50" /></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>SILEX</td><td><img src="images/logo_limonade.png" width="194" height="196" /></td><td></td>
+        </tr>
+        <tr>
+          <td><img src="images/logo_flight.png" width="166" height="73" /></td><td></td><td></td>
+        </tr>
+      </table>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Slim: przyjemny, prezentowany na meetphp, przeczytanie całej dokumentacji ~1h</li>
+          <li>Silex: prosty, zbudowany na elementach Symfony</li>
+          <li>Limonade: wzorowany na podobnych rozwiązaniach w języku LUA</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Frameworki</h2>
+    </hgroup>
+    <article>
+      <table class="unformated">
+        <tr>
+          <td><img src="images/zf-logo.png" width="94" height="50" /></td><td></td><td><img src="images/sf-logo.png" width="145" height="50" /></td>
+        </tr>
+        <tr>
+          <td><center><img src="images/ci_logo_flame.jpg" width="150" height="164" /><br />CodeIgniter</center></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td><img src="images/logo_yii.png" width="284" height="64" /></td><td></td><td><img src="images/logo-phalcon.png" width="98" height="28" /></td>
+        </tr>
+      </table>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Symfony: dokumentacja++, TDD, wzorowane na pythone'owym Django</li>
+          <li>CodeIgniter: ElisLab teraz ale współtworzony przez Kenny'ego Katzgrau, którego tu cytuje i który pracował dla Yahoo, Mozilli</li>
+          <li>Yii: "wyskoczył" jako najpopularniejszy obecnie (11.11.2013)</li>
+          <li>Phalcon: ciekawy pomysł, bo działa jako rozszerzenie PHP</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Narzędzia</h2>
+    </hgroup>
+    <article>
+      <table class="unformated">
+        <tr>
+          <td><img src="images/doctrine-logo.jpg" width="197" height="54" /></td><td><img src="images/propel-logo.png" width="187" height="50" /></td><td><img src="images/redbeanphp-logo.png" width="207" height="38" /></td>
+        </tr>
+        <tr>
+          <td><img src="images/phpunit-logo.jpg" width="150" height="136" /></td><td><img src="images/phpstorm_logo.gif" width="200" height="45" /></td><td>PHP Lint</td>
+        </tr>
+        <tr>
+          <td><img src="images/xdebug-logo.png" width="94" height="50" /></td><td></td><td></td>
+        </tr>
+      </table>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Doctrine, Propel, RedBean PHP: ORMy</li>
+          <li>XDebug: świetne narzędzie do debugowania i ulepszania wydajności</li>
+          <li>PHPUnit, PHPLint (+PHPStorm): dzięki nim Twój kod PHP będzie solidny</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/xdebug.png);">
+    <hgroup>
+      <h2>Xdebug</h2>
+    </hgroup>
+    <article>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <hgroup>
+      <h1>Czy warto zainteresować się PHP?</h1><br/><br/><br /><br /><br />
+    </hgroup>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>sam język ma odpowiedź na to pytanie zaszytą w swojej składni...</li>
+          <li>...jaki znak poprzedza zmienną w PHP? ;-)</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+      <img src="./images/dollar.jpg" width="400" height="400" />
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Praca</h2>
+    </hgroup>
+    <article>
+       <table>
+        <tr>
+          <th></th>
+          <th><img src="./images/logo_goldenline.png" width="262" height="48" /></th>
+          <th><img src="./images/logo_infopraca.png" width="110" height="50" /></th>
+          <th><img src="./images/logo_praca_pl.gif" width="122" height="64" /></th>
+          <th><img src="./images/logo_pracujpl.png" width="158" height="44" /></th>
+        </tr>
+        <tr class="highlight">
+          <td>php</td><td>55</td><td>532</td><td>89</td><td>322</td>
+        </tr>
+        <tr>
+          <td>python</td><td>37</td><td>173</td><td>98</td><td>202</td>
+        </tr>
+        <tr>
+          <td>ruby</td><td>14</td><td>79</td><td>48</td><td>78</td>
+        </tr>
+        <tr>
+          <td>perl</td><td>21</td><td>88</td><td>79</td><td>139</td>
+        </tr>
+      </table>
+      <p style="font-size: small;">Dane z dnia 20 listopada 2013.</p>
+      <br />
+      <br />
+      <p><a href="http://php.net/usage.php">http://php.net/usage.php</a></p>
+      <p><a href="http://w3techs.com/technologies/details/pl-php/all/all">http://w3techs.com/technologies/details/pl-php/all/all</a></p>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>warto dostosować się do rynku pracy</li>
+          <li>poza tym społeczność skupiona wokół języka dojrzewa (testy -- TDD, BDD; SOLID)</li>
+          <li>FB, Twitter, Wikipedia, Wikia ;), Wordpress, Mail.ru</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/wikia_bar_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <q>
+        If you are capable of making wise software design decisions, PHP is a great choice to build your web application with.
+      </q>
+      <div class="author">
+        Kenny Katzgrau<br />
+        CodeIgniter
+      </div>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>język programowania to tylko narzędzie -- warto uczyć się ich wielu</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/wikia_bar_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Dziękuję!</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/wikia_logo.png"></span>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
